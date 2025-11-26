@@ -1,0 +1,319 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.userName {
+    padding: 0.5rem 1rem;
+    color: #16a34a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Header Styles */
+.header {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #333;
+}
+
+.logo-icon {
+    width: 2rem;
+    height: 2rem;
+    color: #16a34a;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #166534;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links a {
+    color: #6b7280;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #16a34a;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-outline {
+    border: 1px solid #16a34a;
+    color: #16a34a;
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: #f0fdf4;
+}
+
+.btn-primary {
+    background: #16a34a;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #15803d;
+}
+
+.btn-lg {
+    padding: 0.75rem 2rem;
+    font-size: 1.125rem;
+}
+
+.btn-white {
+    background: white;
+    color: #16a34a;
+}
+
+.btn-white:hover {
+    background: #f3f4f6;
+}
+
+.btn-outline-white {
+    border: 1px solid white;
+    color: white;
+    background: transparent;
+}
+
+.btn-outline-white:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* AI button */
+.AIchat-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 50px;
+    height: 50px;
+    background-color: #16a34a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.AIchat-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+    fill: none;
+    stroke-width: 2;
+}
+
+/* Hero Section */
+.hero {
+    padding: 4rem 0;
+    text-align: center;
+    background-color: white;
+}
+
+.badge {
+    background: #dcfce7;
+    color: #166534;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.hero-title .text-green {
+    color: #16a34a;
+}
+
+.hero-description {
+    font-size: 1.125rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Stats Section */
+.stats {
+    background: #16a34a;
+    color: white;
+    padding: 3rem 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: #dcfce7;
+}
+
+/* Features Section */
+.features {
+    padding: 4rem 0;
+    background-color: #f9fafb;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.section-description {
+    color: #6b7280;
+    max-width: 32rem;
+    margin: 0 auto;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+}
+
+.feature-icon {
+    width: 3rem;
+    height: 3rem;
+    background: #dcfce7;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: #16a34a;
+}
+
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #111827;
+}
+
+.feature-description {
+    color: #6b7280;
+}
+
+/* CTA Section */
+.cta {
+    background-color: #16a34a;
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.cta-description {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    color: #dcfce7;
+    max-width: 32rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Icons utility */
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: currentColor;
+}
