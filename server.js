@@ -21,6 +21,14 @@ app.get('/tutorial', (req, res) => {
     res.render('tutorials',{}); 
 });
 
+app.get('/blog', (req, res) => {
+    res.render('blog',{}); 
+});
+
+app.get('/dash', (req, res) => {
+    res.render('dash',{}); 
+});
+
 //for  signup
 
 

@@ -1,0 +1,132 @@
+<header>
+    <style>
+        .footer {
+            background: #111827;
+            color: white;
+            padding: 3rem 0;
+            position: relative;
+            /* display: flex; */
+        }
+
+        .footer-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background-image: url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-grid {
+            display: flex;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            justify-content: space-between;
+            /* padding: 0 100px; */
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #4ade80;
+        }
+
+        .footer-brand-text {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .footer-description {
+            color: #9ca3af;
+        }
+
+        .footer-section h3 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+    </style>
+</header>
+<footer class="footer" class = "footerForWeather">
+    <div class="footer-bg"></div>
+    <div class="container footer-content">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">
+                    <svg class="footer-brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                    </svg>
+                    <span class="footer-brand-text">Planta</span>
+                </div>
+                <p class="footer-description">
+                    Empowering farmers with technology<br> to build a sustainable future for agriculture.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Platform</h3>
+                <ul class="footer-links">
+                    <li><a href="/marketPlace" id = 'lastMarket'>Marketplace</a></li>
+                    <li><a href="/agriDoc" id = 'lastAgriDoctor'>Disease Detection</a></li>
+                    <li><a href="/weather" id = 'lastWeather'>Weather Updates</a></li>
+                    <li><a href="/tutorial" id = 'lastTutorials'>Tutorials</a></li>
+                    <li><a href="/blog" id = 'lastBlog'>Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="/contactUs">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="/aboutUs">About Us</a></li>
+                    <li><a href="/privacyPolicy">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Planta. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
