@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chasha.i - Login</title>
+    <link rel="stylesheet" href="/css/logIn.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Background Image -->
+        <div class="background-image"></div>
+        
+        <div class="main-content">
+            <div class="content-wrapper">
+                <div class="logo-section">
+                    <a href="#" class="logo-link">
+                        <!---->
+                        <span class="logo-text">Chasha.i</span>
+                    </a>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title">Login</h1>
+                        <p class="card-description">
+                            Enter your email and password to access your account
+                        </p>
+                    </div>
+                    <form class="form" method="post" action="/logIn" >
+                        <div class="card-content">
+                            <div class="form-group">
+                                <label for="email" class="label">Email</label>
+                                <input 
+                                    
+                                    id="email" 
+                                    name="email"
+                                    type="email" 
+                                    class="input"
+                                    placeholder="farmer@example.com" 
+                                    required
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="label">Password</label>
+                                <input 
+                                    id="password" 
+                                    name="password"
+                                    type="password" 
+                                    placeholder="********"
+                                    class="input"
+                                    required 
+                                />
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button 
+                                class="submit-button" 
+                                type="submit"
+                                id="submitBtn"
+                            >
+                                Login
+                            </button>
+                            <div class="signup-link">
+                                Don't have an account? 
+                                <a href="/signUp">Sign up</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---->
+</body>
+</html>
