@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chasha.i - Sign Up</title>
+    <link rel="stylesheet" href="/css/signUp.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Background Image -->
+        <div class="background-image"></div>
+        
+        <div class="main-content">
+            <div class="content-wrapper">
+                <div class="logo-section">
+                    <a href="#" class="logo-link">
+                        <!---->
+                        <span class="logo-text">Chasha.i</span>
+                    </a>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title">Create an account</h1>
+                        <p class="card-description">
+                            Enter your information to create your account
+                        </p>
+                    </div>
+                    <form class="form"  method="post" action="/signUp" enctype="multipart/form-data">
+                        <div class="card-content">
+                            <div class="form-group">
+                                <label for="name" class="label">Full Name</label>
+                                <input 
+                                    name="name"
+                                    id="name" 
+                                    type="text" 
+                                    class="input"
+                                    placeholder="John Doe" 
+                                    required
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="label">Email</label>
+                                <input 
+                                    name="email"
+                                    id="email" 
+                                    type="email" 
+                                    class="input"
+                                    placeholder="farmer@example.com" 
+                                    required
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="label">Password</label>
+                                <input 
+                                    name="password"
+                                    id="password" 
+                                    type="password" 
+                                    class="input"
+                                    required 
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="text" class="label">Your Image</label>
+                                <input 
+                                    id="img" 
+                                    name="img"
+                                    type="file" 
+                                    class="input"
+                                    accept="image/*"
+                                    required 
+                                />
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button 
+                                class="submit-button" 
+                                type="submit"
+                                id="submitBtn"
+                            >
+                                Create account
+                            </button>
+                            <div class="login-link">
+                                Already have an account? 
+                                <a href="/logIn">Login</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---->
+</body>
+</html>
