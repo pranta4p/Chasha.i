@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chasha.i - Blog</title>
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+    <!-- Header -->
+     <!--/* copied from home nav */-->
+    <header class="header">
+        <div class="containerNav">
+            <nav class="nav">
+                <a href="#" class="logo">
+                    <!---->
+                    <span class="logo-text">Chasha.i</span>
+                </a>
+                <div class="nav-links">
+                    
+                    <a href="/home">Home</a>
+                    <a href="/marketPlace">Marketplace</a>
+                    <a href="/tutorial">Tutorials</a>
+                    <a href="/weather">Weather</a>
+                    <a href="/blog" style="font-weight: bold; color: #16a34a;">Blog</a>
+                    <a href="/agridoc">AgriDoctor</a>
+                </div>
+                <div class="nav-buttons">
+                    <!---->
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--/*// copied from home nav */-->
+
+    <!-- AI button -->
+    <!--It won't go agridoc-->
+     <button class="AIchat-btn" onclick="window.location.href = '/agridoc'">
+        <svg viewBox="0 0 24 24">
+            <path d="M21.05 11.5a9.5 9.5 0 0 1-14.37 8.17L3 21l1.36-4.13a9.5 9.5 0 1 1 16.69-5.37z"/>
+        </svg>
+    </button>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <div class="hero-content">
+                <h1>Farmer Success Stories</h1>
+                <p>Learn from the experiences of farmers across the country</p>
+            </div>
+            <div class="search-container">
+                <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
+                </svg>
+                <input type="text" class="search-input" placeholder="Search blogs by title, content or tags..." id="search" />
+            </div>
+        </div>
+
+        <!-- Blog Grid -->
+        <div class="blog-grid" id="blogGrid">
+            
+        </div>
+
+        <!-- No Results Section -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <p>No blogs match your search criteria.</p>
+            <button class="clear-search-btn" onclick="clearSearch()">Clear Search</button>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="add-section">
+            <a href="/blogAdd" class="add-button">Add Blog</a>
+        </div>
+    </div>
+
+    <!-- Floating Write Blog Button -->
+    <button class="floating-button" onclick="alert('Login to write a blog post!')">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+        </svg>
+    </button>
+    <!---->
+    <!--Dummy Blog-->
+    <script>
+    const blogs = [
+    {
+        title: "How I Increased My Crop Yield",
+        content: "By rotating crops and using organic fertilizer, I improved my yield by 30%.",
+        author: "Rahim",
+        date: "2025-11-27",
+        tags: ["organic", "yield", "rotation"]
+    },
+    {
+        title: "Tomato Farming Tips",
+        content: "Learned some amazing tips for healthy tomatoes this season...",
+        author: "Salma",
+        date: "2025-11-20",
+        tags: ["tomato", "organic"]
+    }
+    ];
+
+    // Function to display blogs
+    const blogGrid = document.getElementById('blogGrid');
+    blogs.forEach(blog => {
+        const div = document.createElement('div');
+        div.className = "blog-card";
+        div.innerHTML = `
+            <h2>${blog.title}</h2>
+            <p>${blog.content}</p>
+            <p><strong>Author:</strong> ${blog.author} | <strong>Date:</strong> ${blog.date}</p>
+            <p><strong>Tags:</strong> ${blog.tags.join(', ')}</p>
+        `;
+        blogGrid.appendChild(div);
+    });
+    </script>
+    <!---->
+    <!--Static Footer-->
+    <footer class="footer">
+        <p>&copy; 2025 Chasha.i. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
