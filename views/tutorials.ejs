@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chasha.i - Tutorials</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/tutorial.css">
+</head>
+<body>
+    <!-- Header -->
+     <!--/* copied from home nav */-->
+    <header class="header">
+        <div class="containerNav">
+            <nav class="nav">
+                <a href="#" class="logo">
+                    <!---->
+                    <span class="logo-text">Chasha.i</span>
+                </a>
+                <div class="nav-links">
+                    
+                    <a href="/home">Home</a>
+                    <a href="/marketPlace">Marketplace</a>
+                    <a href="/tutorial" style="font-weight: bold; color: #16a34a;">Tutorials</a>
+                    <a href="/weather">Weather</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/agridoc">AgriDoctor</a>
+                </div>
+                <div class="nav-buttons">
+                    <!---->
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--/*// copied from home nav */-->
+
+    <!-- AI button -->
+     <button class="AIchat-btn" onclick="window.location.href = '/agridoc'">
+        <svg viewBox="0 0 24 24">
+            <path d="M21.05 11.5a9.5 9.5 0 0 1-14.37 8.17L3 21l1.36-4.13a9.5 9.5 0 1 1 16.69-5.37z"/>
+        </svg>
+    </button>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="hero-title">Agricultural Tutorials</h1>
+            <p class="hero-description">
+                Learn from expert farmers and agricultural specialists through our comprehensive video tutorials
+            </p>
+            <div class="search-container">
+                <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
+                </svg>
+                <input type="text" class="search-input" placeholder="Search tutorials..." id = "search"/>
+            </div>
+        </div>
+
+        
+        <!-- Categories Section -->
+        <!-- <div class="categories-section">
+            <h2 class="categories-title">Browse by Category</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/>
+                        </svg>
+                    </div>
+                    <div class="category-name">Crop Management</div>
+                    <div class="category-count">25 tutorials</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                        </svg>
+                    </div>
+                    <div class="category-name">Irrigation</div>
+                    <div class="category-count">18 tutorials</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="category-name">Pest Control</div>
+                    <div class="category-count">22 tutorials</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                        </svg>
+                    </div>
+                    <div class="category-name">Soil Health</div>
+                    <div class="category-count">15 tutorials</div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Tutorial Grid -->
+        <div class="tutorial-grid" id = "tutorialGrid"></div>
+        <div id = "noResults">
+            <p>No Result Found</p>
+        </div>
+
+        <div class="add-section">
+            <a href="/tutorialsAdd" class="add-button">Add Tutorial</a>
+        </div>
+    </div>
+     <script>
+        <!---->
+</script>
+    <!---->
+</body>
+</html>
