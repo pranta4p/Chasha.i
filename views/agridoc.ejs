@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chasha.i - AgriDoctor AI</title>
+    <link rel="stylesheet" href="/css/agridoc.css">
+</head>
+<body>
+    <!-- Header -->
+     <!--/* copied from home nav */-->
+    <header class="header">
+        <div class="containerNav">
+            <nav class="nav">
+                <a href="#" class="logo">
+                    <!---->
+                    <span class="logo-text">Chasha.i</span>
+                </a>
+                <div class="nav-links">
+                    
+                    <a href="#">Home</a>
+                    <a href="#">Marketplace</a>
+                    <a href="#">Tutorials</a>
+                    <a href="#">Weather</a>
+                    <a href="#">Blog</a>
+                    <a href="" style="font-weight: bold; color: #16a34a;">AgriDoctor</a>
+                </div>
+                <div class="nav-buttons">
+                    <!---->
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--/*// copied from home nav */-->
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="hero-title">AgriDoctor AI</h1>
+            <p class="hero-description">
+                Advanced AI-powered crop disease detection with 95% accuracy
+            </p>
+        </div>
+
+        <!-- Stats Cards -->
+         <!-- changes to -->
+        <div class="stats-grid">
+            <div class="stat-card green">
+                <svg class="stat-icon green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                </svg>
+                <p class="stat-label">Detection Accuracy</p>
+            </div>
+            <div class="stat-card blue">
+                <svg class="stat-icon blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+                </svg>
+                <p class="stat-label">Helping Farmers</p>
+            </div>
+            <div class="stat-card purple">
+                <svg class="stat-icon purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                </svg>
+                <p class="stat-label">Diseases Detectection</p>
+            </div>
+        </div>
+        <!-- changes -->
+
+        <!-- Main Grid -->
+        <div class="main-grid">
+            <!-- Upload Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Upload Plant Image</h2>
+                    <p class="card-description">
+                        Upload a clear image of your plant showing the affected areas for accurate disease detection
+                    </p>
+                </div>
+                <div class="card-content">
+                    <div class="upload-area" id="uploadArea">
+                        <div id="uploadPrompt">
+                            <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            <p class="upload-text">Drag & drop your image here or click to browse</p>
+                            <p class="upload-help">Supported formats: JPG, PNG, WEBP (Max 10MB)</p>
+                        </div>
+                        <div id="imagePreview" class="hidden">
+                            <div class="image-preview">
+                                <img id="previewImage" class="preview-image" />
+                                <button class="change-button" onclick="clearImage()">Change</button>
+                            </div>
+                        </div>
+                        <input type="file" id="imageInput" accept="image/*" style="display: none;" />
+                        <button class="upload-button" onclick="document.getElementById('imageInput').click()" id="uploadBtn">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                            </svg>
+                            Upload Image
+                        </button>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="analyze-button" id="analyzeBtn" onclick="analyzeImage()" disabled>
+                        <span id="analyzeText">Analyze with AI</span>
+                        <div class="spinner hidden" id="spinner"></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">AI Detection Results</h2>
+                    <p class="card-description">
+                        AI-based diagnosis and recommended treatments for detected diseases
+                    </p>
+                </div>
+                <div class="card-content">
+                    <div class="results-content" id="resultsContent">
+                        <div class="disease-result">
+                            <div id = "diseaseName"></div>
+                            <div id = "confidenceScore"></div>
+                            <!-- <div class="disease-info">
+                                <h3>Detected Disease:</h3>
+                                <div class="disease-name">Leaf Blight</div>
+                            </div>
+                            <div class="confidence-info">
+                                <div class="confidence-score">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    92%
+                                </div>
+                                <div class="confidence-badge">High Confidence</div>
+                            </div> -->
+                        </div>
+                        <!-- <div class="treatment-section">
+                            <h3>
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                                </svg>
+                                Recommended Treatment:
+                            </h3>
+                            <div class="treatment-content">
+                                <p class="treatment-text">
+                            </div>
+                            <div class="tip-box">
+                                <p class="tip-text">
+                                    <strong>Tip:</strong> 
+                                </p>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How it Works Section -->
+        <div class="how-it-works">
+            <h2>How AgriDoctor Works</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                        </svg>
+                    </div>
+                    <h3 class="step-title">Upload</h3>
+                    <p class="step-description">
+                        Take a clear photo of your plant showing the affected areas and upload it
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <span style="font-weight: bold; font-size: 1.5rem;">AI</span>
+                    </div>
+                    <h3 class="step-title">Detect</h3>
+                    <p class="step-description">
+                        Our AI model analyzes the image and identifies the disease affecting your crop
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="step-title">Treat</h3>
+                    <p class="step-description">
+                        Get tailored treatment recommendations and preventative measures
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---->
+</body>
+</html>
