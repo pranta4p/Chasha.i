@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chasha.i - Marketplace</title>
+    <link rel="stylesheet" href="/css/marketPlace.css">
+</head>
+<body>
+    <div class="background-image"></div>
+    
+    <!-- Header -->
+     <!--/* copied from home nav */-->
+    <header class="header">
+        <div class="containerNav">
+            <nav class="nav">
+                <a href="#" class="logo">
+                    <!---->
+                    <span class="logo-text">Chasha.i</span>
+                </a>
+                <div class="nav-links">
+                    
+                    <a href="/home">Home</a>
+                    <a href="/marketPlace" style="font-weight: bold; color: #16a34a;">Marketplace</a>
+                    <a href="/tutorial">Tutorials</a>
+                    <a href="/weather">Weather</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/agridoc">AgriDoctor</a>
+                </div>
+                <div class="nav-buttons">
+                    <!---->
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--/*// copied from home nav */-->
+
+    <!-- AI button -->
+    <button class="AIchat-btn" onclick="window.location.href = '/agridoc'">
+        <svg viewBox="0 0 24 24">
+            <path d="M21.05 11.5a9.5 9.5 0 0 1-14.37 8.17L3 21l1.36-4.13a9.5 9.5 0 1 1 16.69-5.37z"/>
+        </svg>
+    </button>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="containerNav">
+            <h1 class="page-title">Agricultural Marketplace</h1>
+            
+            <!-- Filters -->
+            <div class="filters">
+                <h2>Filter Products</h2>
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label for="search" class="filter-label">Search by Name or Description</label>
+                        <input type="text" id="search" class="input" placeholder="Search products...">
+                    </div>
+                    <div class="filter-group">
+                        <label for="location" class="filter-label">Filter by Location</label>
+                        <select id="location" class="select">
+                            <!--location-->
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="type" class="filter-label">Filter by Type</label>
+                        <select id="type" class="select">
+                            <!--types-->
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Products Grid -->
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be rendered here by JavaScript -->
+            </div>
+            <!-- No Results -->
+            <div class="no-results" id="no-results" style="display: none;">
+                <p>No products match your search criteria.</p>
+                <button class="clear-filters-btn" onclick="clearFilters()">Clear Filters</button>
+            </div>
+
+            <div class="add-section">
+                <a href="#" class="add-button">Add Product</a>
+            </div>
+            
+        </div>
+    </main>
+    <script>
+    <!---->
+</script>
+    <!---->
+</body>
+</html>
