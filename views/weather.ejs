@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chasha.i Weather - Agricultural Weather App</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/weather.css">
+    
+    <meta name="description" content="Real-time weather updates for agricultural planning and farming activities">
+    <meta name="keywords" content="weather, agriculture, farming, crops, irrigation">
+    <meta name="author" content="Chasha.i Agricultural Platform">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a class="logo">
+                    <!---->
+                    <span class="logo-text">Chasha.i</span>
+                </a>
+                <div class="nav-links">
+                    <!-- href thakle mouse pointer hoi -->
+                    <a href="/home">Home</a>
+                    <a href="/marketPlace">Marketplace</a>
+                    <a href="/tutorial">Tutorials</a>
+                    <a href="/weather" style="font-weight: bold; color: #16a34a;">Weather</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/agridoc">AgriDoctor</a>
+                </div>
+                <div class="nav-buttons">
+                    <!---->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- AI button -->
+     <button class="AIchat-btn" onclick="window.location.href = '/agridoc'">
+        <svg viewBox="0 0 24 24">
+            <path d="M21.05 11.5a9.5 9.5 0 0 1-14.37 8.17L3 21l1.36-4.13a9.5 9.5 0 1 1 16.69-5.37z"/>
+        </svg>
+    </button>
+
+    <div class="weather-app">
+        <div class="containerWeather">
+            <header class="Title">
+                <h1 class="logo-text">
+                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                    </svg>
+                    Chasha.i Weather
+                </h1>
+
+                <p class="subtitle">Real-time weather updates for farmers</p>
+            </header>
+
+            <section class="search-section">
+                <div class="search-card">
+                    <div class="search-container">
+                        <div class="search-input-wrapper">
+                            <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 12.414a6 6 0 10-1.414 1.414l4.243 4.243a1 1 0 001.414-1.414z"/>
+                            </svg>
+                            <input 
+                                type="text" 
+                                id="searchInput" 
+                                class="search-input" 
+                                placeholder="Search City..."
+                                autocomplete="off"
+                            >
+                        </div>
+                        <button id="searchBtn" class="search-btn">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <div id="loadingSpinner" class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Fetching weather data...</p>
+            </div>
+            <div id="errorMessage" class="error-message">
+            </div>
+
+            <div id="initialMessage" class="initial-message">
+                <div class="initial-card">
+                    <h3>Search for a city to get started</h3>
+                    <p>Get real-time weather data for your farming location</p>
+                </div>
+            </div>
+
+            <div id="weatherContainer" class="weather-container">
+                <div class="main-weather-card">
+                    <div class="location-info">
+                        <h2>
+                            <span id="cityName">City Name</span>, 
+                            <span id="countryName">Country</span>
+                        </h2>
+                    </div>
+                    
+                    <div class="weather-main">
+                        <img id="weatherIcon" class="weather-icon" src="" alt="Weather Icon">
+                        
+                        <div class="weather-details">
+                            <div id="temperature" class="temperature">--°C</div>
+                            <div id="description" class="description">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weather-details-grid">
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <span class="detail-label">Air Quality Index</span>
+                                <i class="fas fa-smog icon"></i>
+                        </div>
+                        <div id="airQuality" class="detail-value">--</div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <span class="detail-label">Real Feel</span>
+                                <i class="fas fa-thermometer-half icon"></i>
+                        </div>
+                        <div id="realFeel" class="detail-value">--°C</div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <span class="detail-label">Humidity</span>
+                                <i class="fas fa-tint icon"></i>
+                        </div>
+                        <div id="humidity" class="detail-value">--%</div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <span class="detail-label">Highest Temperature</span>
+                                <i class="fas fa-sun icon"></i>
+                        </div>
+                        <div id="highTemp" class="detail-value">--°C</div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <span class="detail-label">Lowest Temperature</span>
+                                <i class="fas fa-snowflake icon"></i>
+                        </div>
+                        <div id="lowTemp" class="detail-value">--°C</div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <span class="detail-label">Wind Speed</span>
+                                <i class="fas fa-wind icon"></i>
+                        </div>
+                        <div id="windSpeed" class="detail-value">-- m/s</div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <span class="detail-label">Wind Direction</span>
+                                <i class="fas fa-compass icon"></i>
+                        </div>
+                        <div id="windDirection" class="detail-value">--</div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <span class="detail-label">Visibility</span>
+                                <i class="fas fa-eye icon"></i>
+                        </div>
+                        <div id="visibility" class="detail-value">-- km</div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <span class="detail-label">Pressure</span>
+                                <i class="fas fa-gauge-high icon"></i>
+                        </div>
+                        <div id="pressure" class="detail-value">-- hPa</div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <span class="detail-label">Sunrise</span>
+                                <i class="fas fa-arrow-up icon"></i>
+                                <i class="fas fa-sun icon"></i>
+                        </div>
+                        <div id="sunrise" class="detail-value">--:--</div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <span class="detail-label">Sunset</span>
+                                <i class="fas fa-arrow-down icon"></i>
+                                <i class="fas fa-sun icon"></i>
+                        </div>
+                        <div id="sunset" class="detail-value">--:--</div>
+                    </div>
+                </div>
+
+                <div class="insights-card">
+                    <h3>Agricultural Weather Insights</h3>
+                    <div class="insights-grid">
+                        <div id="cropConditions" class="insight-card">
+                            🌱 <strong>Crop Conditions:</strong> Loading...
+                        </div>
+                        <div id="irrigationNeeds" class="insight-card">
+                            💧 <strong>Irrigation Needs:</strong> Loading...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---->
+    
+
+</body>
+</html>
