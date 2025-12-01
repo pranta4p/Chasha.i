@@ -350,6 +350,62 @@ app.get('/addToCart/:id',authMiddleware, async(req, res) => {
      
 })
 
+//delete request
+//------#####----
+
+app.delete('/removeFromCart/:id', authMiddleware, async (req, res) => {
+  const productId = req.params.id;
+  const userId = req.user.userId;
+  try {
+    await User.findByIdAndUpdate(userId, {
+      $pull: { cart: productId } 
+    });
+
+    res.json({ message: 'Removed from cart successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error removing item from cart' });
+  }
+});
+
+
+app.delete('/deleteProduct/:id', authMiddleware, async (req, res) => {
+  const productId = req.params.id;
+  const userId = req.user.userId;
+
+  try {
+    //  Remove product ID from user's postedProducts array
+    await User.findByIdAndUpdate(userId, {
+      $pull: { postedProducts: productId }
+    });
+
+    //  Find the product
+    const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    //  Delete image file if exists
+    if (product.image) {
+      const imagePath = path.join(__dirname, '..', product.image); 
+      fs.unlink(imagePath, (err) => {
+        if (err) {
+          console.warn(`Failed to delete image: ${imagePath}`);
+        } else {
+          console.log(`Image deleted: ${imagePath}`);
+        }
+      });
+    }
+
+    //  Delete product from DB
+    await Product.findByIdAndDelete(productId);
+
+    res.json({ message: 'Product deleted successfully' });
+  } catch (error) {
+    console.error('Delete Error:', error);
+    res.status(500).json({ message: 'Error deleting product' });
+  }
+});
 
 app.get('/logOut', (req, res) => {
   res.clearCookie('token');
