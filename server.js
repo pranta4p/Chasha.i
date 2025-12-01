@@ -294,6 +294,37 @@ app.get('/myProduct', authMiddleware, async (req, res) => {
   }
 });
 
+//all get request /id:
+//------#####----------
+
+
+
+router.get('/blogDetail/:id', async(req, res) => {
+    const token = req.cookies.token;
+    let f=0;
+    if(token){f=1;}
+    const blogId = req.params.id;
+    const blog = await Blog.findById(blogId);
+    if(token){
+       const decoded = jwt.verify(token, jwtSecret);
+    const userId = decoded.userId;
+     
+    const userData = await User.findById(userId); 
+    
+    
+     return res.render("blogDetail", {blog,userData, f});
+    }
+    else{
+      const userData=null;
+      return res.render("blogDetail", {blog,userData, f});
+    }
+    
+    // console.log(blog.title);
+    // console.log(blog);
+
+   
+})
+
 
 app.get('/logOut', (req, res) => {
   res.clearCookie('token');
