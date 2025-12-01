@@ -3,9 +3,10 @@ const app = express();
 const port = 3000;
 const connectDB = require('./server/config/db');
 app.use(express.static("public"));
-app.set("view engine", "ejs");
 
+app.set("view engine", "ejs");
 connectDB();
+
 app.get('/', (req, res) => {
     res.render('home', {});
 });
@@ -51,7 +52,6 @@ app.get('/blog', async(req, res) => {
 
     const blogs = await Blog.find();
     res.render("blog", {f, userData, blogs});
-
 })
 
 app.get('/blogAdd', (req, res) => {
@@ -151,7 +151,51 @@ app.post('/logIn',  async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+//blog
+app.get('/blogAdd', (req, res) => {
+    res.render("blogAdd", {});
+})
+app.post('/blogAdd',
+  upload.single('img'), async(req, res) => {
+     try {
+      const {
+        title,
+        summary,
+        description,
+        attribute1,
+        attribute2, 
+        attribute3,
+      } = req.body;
+    
+        
+       const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
+      const user = await User.findById(req.user.userId);
+      console.log(imagePath);
+      const blog = new Blog({
+        title,
+        summary,
+        author_name:user.name,
+        attribute1,
+        attribute2, 
+        attribute3,
+        description,
+        image: imagePath,
+      });
+      console.log(blog);
+      const savedblog=await blog.save();
+      user.postedBlogs.push(savedblog._id);
+       await user.save();
+      //  console.log(user);
+      // if(savedblog)console.log("bolg added successfully");
+      res.redirect('/blog');
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Failed to add Blog');
+    }
+  
+})
 //tutorials
+
 app.post('/tutorialsAdd',
   upload.single('img'), async(req, res) => {
      try {
