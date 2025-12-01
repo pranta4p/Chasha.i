@@ -218,6 +218,52 @@ app.post('/logIn',  async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+//product
+app.post(
+  '/marketPlaceProductAdd',
+  authMiddleware,
+  upload.single('img'), 
+  async (req, res) => {
+    try {
+      const user = await User.findById(req.user.userId);
+      const {
+        name,
+        type,
+        location,
+        price,
+        unit,
+        sellerName, 
+        phone,
+        description,
+      } = req.body;
+    
+        
+      const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
+
+      // console.log(imagePath);
+      const product = new Product({
+        name,
+        type,
+        location,
+        price,
+        unit,
+        seller: sellerName,
+        phone,
+        description,
+        image: imagePath,
+      });
+      console.log(product);
+      const savedproduct=await product.save();
+      user.postedProducts.push(savedproduct._id);
+       await user.save();
+      res.redirect('/marketPlace');
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Failed to add product');
+    }
+  }
+);
+
 //blog
 
 app.post('/blogAdd',authMiddleware,
