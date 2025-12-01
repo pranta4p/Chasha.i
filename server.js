@@ -4,8 +4,75 @@ const port = 3000;
 const connectDB = require('./server/config/db');
 app.use(express.static("public"));
 
+const User = require('./server/models/User');
+const Tutorial=require('./server/models/Tutorial')
+const Blog=require('./server/models/Blog');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const multer=require('multer')
+const path =require('path')
+const mongoose = require('mongoose');
+const fs = require('fs');
+const jwtSecret = process.env.JWT_SECRET;
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+require('dotenv').config();
+//
+
 app.set("view engine", "ejs");
 connectDB();
+
+const authMiddleware = (req, res, next ) => {
+  const token = req.cookies.token;
+
+  if(!token) {
+    return res.status(401).render("messagePage", {
+       message: "Please login first",
+     redirectUrl: "/login"
+     });
+
+  }
+
+  try {
+    const decoded = jwt.verify(token, jwtSecret);
+    // req.userId = decoded.userId;
+    req.user = { userId: decoded.userId };
+    next();
+  } catch(error) {
+    res.status(401).json( { message: 'Unauthorized'} );
+  }
+}
+const alreadyLogedInMiddleware=(req,res,next)=>{
+    const token = req.cookies.token;
+
+  if(token) {
+    return res.status(401).render("messagePage", {
+       message: 'you are already loged in',
+     redirectUrl: "/"
+     });
+    
+  }
+
+  try {
+    next();
+  } catch(error) {
+    res.status(401).json( { message: 'authorization failed'} );
+  }
+}
+
+
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, '../../uploads')); 
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); 
+  },
+});
+const upload=multer({storage:storage});
+
+
 
 app.get('/', (req, res) => {
     res.render('home', {});
@@ -54,7 +121,7 @@ app.get('/blog', async(req, res) => {
     res.render("blog", {f, userData, blogs});
 })
 
-app.get('/blogAdd', (req, res) => {
+app.get('/blogAdd',authMiddleware, (req, res) => {
     res.render("blogAdd", {}); 
 });
 
@@ -62,13 +129,13 @@ app.get('/marketPlaceProductAdd', (req, res) => {
     res.render("marketPlaceProductAdd", {}); 
 });
 
-app.get('/tutorialsAdd', (req, res) => {
+app.get('/tutorialsAdd',authMiddleware, (req, res) => {
     res.render("tutorialsAdd", {}); 
 });
 //for  signup
 
 
-app.get('/signUp', (req, res) => {
+app.get('/signUp',alreadyLogedInMiddleware, (req, res) => {
     res.render("signUp", {});
 })
 app.post('/signUp', async(req, res) => {
@@ -107,7 +174,7 @@ app.post('/signUp', async(req, res) => {
 })
 
 // login 
-app.get('/logIn', (req, res) => {
+app.get('/logIn',alreadyLogedInMiddleware, (req, res) => {
     res.render("logIn", {});
 })
 app.post('/logIn',  async (req, res) => {
@@ -152,10 +219,8 @@ app.post('/logIn',  async (req, res) => {
   }
 });
 //blog
-app.get('/blogAdd', (req, res) => {
-    res.render("blogAdd", {});
-})
-app.post('/blogAdd',
+
+app.post('/blogAdd',authMiddleware,
   upload.single('img'), async(req, res) => {
      try {
       const {
@@ -196,7 +261,7 @@ app.post('/blogAdd',
 })
 //tutorials
 
-app.post('/tutorialsAdd',
+app.post('/tutorialsAdd',authMiddleware,
   upload.single('img'), async(req, res) => {
      try {
       const {
