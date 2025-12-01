@@ -81,8 +81,28 @@ app.get('/home', (req, res) => {
     res.render('home', {});
 });
 
-app.get('/marketplace', (req, res) => {
-    res.render('marketPlace',{}); 
+app.get('/marketPlace', async (req, res) => {
+  const token = req.cookies.token;
+    let f = 0;
+    let userData = null;
+
+    if (token) {
+        try {
+            const decoded = jwt.verify(token, jwtSecret);
+            const userId = decoded.userId;
+
+            userData = await User.findById(userId); 
+            f = 1;
+            // console.log(userData);
+
+        } catch (err) {
+            console.error("Invalid token", err.message);
+        }
+    }
+
+    const products = await Product.find();
+    console.log(userData);
+    res.render("marketPlace", {f, userData, products});
 });
 
 app.get('/tutorial', (req, res) => {
@@ -217,6 +237,16 @@ app.post('/logIn',  async (req, res) => {
     console.error('Login error:', err.message);
     res.status(500).send('Server Error');
   }
+});
+
+//
+app.get('/privacyPolicy', (req, res) => {
+    res.render("privacyPolicy", {});
+})
+
+app.get('/logOut', (req, res) => {
+  res.clearCookie('token');
+  res.redirect('/home');
 });
 //product
 app.post(
