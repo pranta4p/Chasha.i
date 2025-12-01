@@ -61,6 +61,77 @@ router.get('/home', async (req, res) => {
 });
 
 
+router.get('/marketPlace', async (req, res) => {
+  const token = req.cookies.token;
+    let f = 0;
+    let userData = null;
+
+    if (token) {
+        try {
+            const decoded = jwt.verify(token, jwtSecret);
+            const userId = decoded.userId;
+
+            userData = await User.findById(userId); 
+            f = 1;
+            // console.log(userData);
+
+        } catch (err) {
+            console.error("Invalid token", err.message);
+        }
+    }
+
+    const products = await Product.find();
+    console.log(userData);
+    res.render("marketPlace", {f, userData, products});
+});
+
+router.get('/weather', async(req, res) => {
+  const token = req.cookies.token;
+    let f = 0;
+    let userData = null;
+
+    if (token) {
+        try {
+            const decoded = jwt.verify(token, jwtSecret);
+            const userId = decoded.userId;
+
+            userData = await User.findById(userId); 
+
+            f = 1;
+            // console.log(userData);
+
+        } catch (err) {
+            console.error("Invalid token", err.message);
+        }
+    }
+
+    res.render("weather", {f, userData});
+})
+
+
+router.get('/agridoc', async(req, res) => {
+    const token = req.cookies.token;
+    let f = 0;
+    let userData = null;
+
+    if (token) {
+        try {
+            const decoded = jwt.verify(token, jwtSecret);
+            const userId = decoded.userId;
+
+            userData = await User.findById(userId); 
+
+            f = 1;
+            // console.log(userData);
+
+        } catch (err) {
+            console.error("Invalid token", err.message);
+        }
+    }
+
+    res.render("agridoc", {f, userData});
+})
+
 router.get('/aboutUs', (req, res) => {
     console.log("jf");
     res.render("aboutUs", {});

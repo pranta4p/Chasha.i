@@ -11,6 +11,7 @@ router.use(cookieParser());
 // if loged in it says already logged in 
 const ensureNotLogedIn=require('../middleware/ensureNotLogedIn');
 const upload=require('../middleware/upload');
+
 router.get('/logIn',ensureNotLogedIn, (req, res) => {
     res.render("logIn", {});
 })
