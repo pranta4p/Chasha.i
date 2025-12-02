@@ -5,12 +5,12 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const jwtSecret = process.env.JWT_SECRET;
-const cookieParser = require('cookie-parser');
-router.use(cookieParser());
-
+const bcrypt =require('bcrypt')
 // if loged in it says already logged in 
 const ensureNotLogedIn=require('../middleware/ensureNotLogedIn');
 const upload=require('../middleware/upload');
+
+const User = require('../models/User');
 
 router.get('/logIn',ensureNotLogedIn, (req, res) => {
     res.render("logIn", {});
@@ -65,7 +65,7 @@ router.post('/signUp',upload.single('img'), async(req, res) => {
      console.log(req.body);
     try {
     const {email, password,name } = req.body;
-      const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
+      const imagePath = req.file ? `./uploads/${req.file.filename}` : null;
     // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
