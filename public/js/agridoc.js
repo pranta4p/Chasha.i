@@ -1,4 +1,4 @@
-const HF_TOKEN = ""; // Replace with your actual token or use a backend proxy
+const HF_TOKEN = "";
 const MODEL_ENDPOINT = "https://api-inference.huggingface.co/models/linkanjarad/mobilenet_v2_1.0_224-plant-disease-identification";
 
 let uploadedImage = null;

@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chasha.i - Marketplace</title>
     <link rel="stylesheet" href="/css/marketPlace.css">
 </head>
-
 <body>
     <div class="background-image"></div>
-
+    
     <!-- Header -->
-    <!--/* copied from home nav */-->
+     <!--/* copied from home nav */-->
     <header class="header">
         <div class="containerNav">
             <nav class="nav">
@@ -20,7 +18,7 @@
                     <span class="logo-text">Chasha.i</span>
                 </a>
                 <div class="nav-links">
-
+                    
                     <a href="/home">Home</a>
                     <a href="/marketPlace" style="font-weight: bold; color: #16a34a;">Marketplace</a>
                     <a href="/tutorial">Tutorials</a>
@@ -37,9 +35,9 @@
     <!--/*// copied from home nav */-->
 
     <!-- AI button -->
-    <button class="AIchat-btn" onclick="window.location.href = '/agridoc'">
+     <button class="AIchat-btn" onclick="window.location.href = '/agridoc'">
         <svg viewBox="0 0 24 24">
-            <path d="M21.05 11.5a9.5 9.5 0 0 1-14.37 8.17L3 21l1.36-4.13a9.5 9.5 0 1 1 16.69-5.37z" />
+            <path d="M21.05 11.5a9.5 9.5 0 0 1-14.37 8.17L3 21l1.36-4.13a9.5 9.5 0 1 1 16.69-5.37z"/>
         </svg>
     </button>
 
@@ -47,7 +45,7 @@
     <main class="main-content">
         <div class="containerNav">
             <h1 class="page-title">Agricultural Marketplace</h1>
-
+            
             <!-- Filters -->
             <div class="filters">
                 <h2>Filter Products</h2>
@@ -85,7 +83,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <!-- Products Grid -->
             <div class="products-grid" id="products-grid">
                 <!-- Products will be rendered here by JavaScript -->
@@ -99,14 +97,13 @@
             <div class="add-section">
                 <a href="/marketPlaceProductAdd" class="add-button">Add Product</a>
             </div>
-
+            
         </div>
     </main>
     <script>
-        const products = <% - JSON.stringify(products) %>;
+        const products = <%- JSON.stringify(products) %>;
     </script>
     <script src="/js/marketPlace.js"></script>
     <%- include("layout/footer") %>
 </body>
-
 </html>
