@@ -26,7 +26,7 @@
                     <a href="/agridoc">AgriDoctor</a>
                 </div>
                 <div class="nav-buttons">
-                    <!---->
+                    <%- include("layout/loginOutUser") %>
                 </div>
             </nav>
         </div>
@@ -80,45 +80,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
         </svg>
     </button>
-    <!---->
-    <!--Dummy Blog-->
     <script>
-    const blogs = [
-    {
-        title: "How I Increased My Crop Yield",
-        content: "By rotating crops and using organic fertilizer, I improved my yield by 30%.",
-        author: "Rahim",
-        date: "2025-11-27",
-        tags: ["organic", "yield", "rotation"]
-    },
-    {
-        title: "Tomato Farming Tips",
-        content: "Learned some amazing tips for healthy tomatoes this season...",
-        author: "Salma",
-        date: "2025-11-20",
-        tags: ["tomato", "organic"]
-    }
-    ];
-
-    // Function to display blogs
-    const blogGrid = document.getElementById('blogGrid');
-    blogs.forEach(blog => {
-        const div = document.createElement('div');
-        div.className = "blog-card";
-        div.innerHTML = `
-            <h2>${blog.title}</h2>
-            <p>${blog.content}</p>
-            <p><strong>Author:</strong> ${blog.author} | <strong>Date:</strong> ${blog.date}</p>
-            <p><strong>Tags:</strong> ${blog.tags.join(', ')}</p>
-        `;
-        blogGrid.appendChild(div);
-    });
+        const blogs = <%- JSON.stringify(blogs) %>;
     </script>
-    <!---->
-    <!--Static Footer-->
-    <footer class="footer">
-        <p>&copy; 2025 Chasha.i. All rights reserved.</p>
-    </footer>
-
+    <script src="/js/blog.js"></script>
+    <%- include("layout/footer") %>
 </body>
 </html>
