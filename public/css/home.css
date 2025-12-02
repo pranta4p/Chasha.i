@@ -141,16 +141,24 @@ body {
     height: 50px;
     background-color: #16a34a;
     border-radius: 50%;
+    border-color: transparent;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: transform 0.5s ease;
     z-index: 1000;
 }
 
+.AIchat-btn:hover {
+    transform: scale(1.07);
+    background-color: #166534;
+}
+
 .AIchat-btn svg {
-    width: 24px;
-    height: 24px;
+    width: 23px;
+    height: 23px;
     stroke: white;
     fill: none;
     stroke-width: 2;
