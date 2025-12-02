@@ -1,31 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chasha.i - Login</title>
+    <title>Planta - Login</title>
     <link rel="stylesheet" href="/css/logIn.css">
 </head>
-
 <body>
     <div class="container">
         <!-- Background Image -->
         <div class="background-image"></div>
-
+        
         <div class="main-content">
             <div class="content-wrapper">
                 <div class="logo-section">
                     <a href="#" class="logo-link">
                         <svg class="leaf-icon" viewBox="0 0 24 24">
-                            <path
-                                d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
-                            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+                            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
                         </svg>
-                        <span class="logo-text">Chasha.i</span>
+                        <span class="logo-text">Planta</span>
                     </a>
                 </div>
-
+                
                 <div class="card">
                     <div class="card-header">
                         <h1 class="card-title">Product Details</h1>
@@ -34,7 +31,13 @@
                         <div class="card-content">
                             <div class="form-group">
                                 <label for="text" class="label">Name</label>
-                                <input id="name" name="name" type="text" class="input" required />
+                                <input 
+                                    id="name" 
+                                    name="name"
+                                    type="text" 
+                                    class="input"
+                                    required 
+                                />
                             </div>
                             <!-- <div class="form-group">
                                 <label for="text" class="label">Type</label>
@@ -52,7 +55,13 @@
                             </div> -->
                             <div class="form-group">
                                 <label for="text" class="label">Type</label>
-                                <select id="type" name="type" type="text" class="input" required>
+                                <select 
+                                    id="type" 
+                                    name="type"
+                                    type="text" 
+                                    class="input"
+                                    required 
+                                >
                                     <option value="None">None</option>
                                     <option value="Vegetables">Vegetables</option>
                                     <option value="Fruits">Fruits</option>
@@ -74,7 +83,13 @@
                             </div> -->
                             <div class="form-group">
                                 <label for="text" class="label">Location</label>
-                                <select id="location" name="location" type="text" class="input" required>
+                                <select 
+                                    id="location" 
+                                    name="location"
+                                    type="text" 
+                                    class="input"
+                                    required 
+                                >
                                     <option value="All">All Locations</option>
                                     <option value="Rajshahi">Rajshahi</option>
                                     <option value="Sylhet">Sylhet</option>
@@ -88,31 +103,72 @@
                             </div>
                             <div class="form-group">
                                 <label for="text" class="label">Price</label>
-                                <input id="price" name="price" type="text" class="input" required />
+                                <input 
+                                    id="price" 
+                                    name="price"
+                                    type="text" 
+                                    class="input"
+                                    required 
+                                />
                             </div>
                             <div class="form-group">
                                 <label for="text" class="label">Unit</label>
-                                <input id="unit" name="unit" type="text" class="input" required />
+                                <input 
+                                    id="unit" 
+                                    name="unit"
+                                    type="text" 
+                                    class="input"
+                                    required 
+                                />
                             </div>
                             <div class="form-group">
                                 <label for="text" class="label">Seller Name</label>
-                                <input id="sellerName" name="sellerName" type="text" class="input" required />
+                                <input 
+                                    id="sellerName" 
+                                    name="sellerName"
+                                    type="text" 
+                                    class="input"
+                                    required 
+                                />
                             </div>
                             <div class="form-group">
                                 <label for="text" class="label">Phone No.</label>
-                                <input id="phone" name="phone" type="text" class="input" required />
+                                <input 
+                                    id="phone" 
+                                    name="phone"
+                                    type="text" 
+                                    class="input"
+                                    required 
+                                />
                             </div>
                             <div class="form-group">
                                 <label for="text" class="label">Description</label>
-                                <input id="description" name="description" type="text" class="input" required />
+                                <input 
+                                    id="description" 
+                                    name="description"
+                                    type="text" 
+                                    class="input"
+                                    required 
+                                />
                             </div>
                             <div class="form-group">
                                 <label for="text" class="label">Product Image</label>
-                                <input id="img" name="img" type="file" class="input" accept="image/*" required />
+                                <input 
+                                    id="img" 
+                                    name="img"
+                                    type="file" 
+                                    class="input"
+                                    accept="image/*"
+                                    required 
+                                />
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button class="submit-button" type="submit" id="submitBtn">
+                            <button 
+                                class="submit-button" 
+                                type="submit"
+                                id="submitBtn"
+                            >
                                 Add
                             </button>
                         </div>
@@ -123,5 +179,4 @@
     </div>
     <script src="/js/marketPlaceProductAdd.js"></script>
 </body>
-
 </html>

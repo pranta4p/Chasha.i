@@ -1,90 +1,88 @@
-<header>
-    <style>
-        .footer {
-            background: #111827;
-            color: white;
-            padding: 3rem 0;
-            position: relative;
-            /* display: flex; */
-        }
+<style>
+    .footer {
+        background: #111827;
+        color: white;
+        padding: 3rem 0;
+        position: relative;
+        /* display: flex; */
+    }
 
-        .footer-bg {
-            position: absolute;
-            inset: 0;
-            opacity: 0.05;
-            background-image: url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+    .footer-bg {
+        position: absolute;
+        inset: 0;
+        opacity: 0.05;
+        background-image: url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?q=80&w=2000&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 
-        .footer-content {
-            position: relative;
-            z-index: 10;
-        }
+    .footer-content {
+        position: relative;
+        z-index: 10;
+    }
 
-        .footer-grid {
-            display: flex;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            justify-content: space-between;
-            /* padding: 0 100px; */
-        }
+    .footer-grid {
+        display: flex;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        justify-content: space-between;
+        /* padding: 0 100px; */
+    }
 
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
+    .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
 
-        .footer-brand-icon {
-            width: 1.5rem;
-            height: 1.5rem;
-            color: #4ade80;
-        }
+    .footer-brand-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: #4ade80;
+    }
 
-        .footer-brand-text {
-            font-size: 1.25rem;
-            font-weight: bold;
-        }
+    .footer-brand-text {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
 
-        .footer-description {
-            color: #9ca3af;
-        }
+    .footer-description {
+        color: #9ca3af;
+    }
 
-        .footer-section h3 {
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
+    .footer-section h3 {
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
 
-        .footer-links {
-            list-style: none;
-        }
+    .footer-links {
+        list-style: none;
+    }
 
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
+    .footer-links li {
+        margin-bottom: 0.5rem;
+    }
 
-        .footer-links a {
-            color: #9ca3af;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+    .footer-links a {
+        color: #9ca3af;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
 
-        .footer-links a:hover {
-            color: white;
-        }
+    .footer-links a:hover {
+        color: white;
+    }
 
-        .footer-bottom {
-            border-top: 1px solid #374151;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            text-align: center;
-            color: #9ca3af;
-        }
-    </style>
-</header>
+    .footer-bottom {
+        border-top: 1px solid #374151;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        text-align: center;
+        color: #9ca3af;
+    }
+</style>
 <footer class="footer" class="footerForWeather">
     <div class="footer-bg"></div>
     <div class="container footer-content">
