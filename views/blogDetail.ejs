@@ -25,15 +25,15 @@
                     <a href="/agridoc">AgriDoctor</a>
                 </div>
                 <div class="nav-buttons">
-                    <!---->
+                    <%- include("layout/loginOutUser") %>
                 </div>
             </nav>
         </div>
     </header>
     <div id="bodyCard" class = "bodyCard"></div>
     <script>
-        <!---->
+        const blog = <%- JSON.stringify(blog) %>;
     </script>
-    <!---->
+    <script src="/js/blogDetail.js"></script>
 </body>
 </html>
