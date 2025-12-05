@@ -12,12 +12,10 @@
         <div class="container">
             <nav class="nav">
                 <a class="logo">
-                    <!---->
                     <span class="logo-text">Chasha.i</span>
                 </a>
                 <div class="nav-links">
                     <!-- href thakle mouse pointer hoi -->
-                    <!---->
                     <a href="/home">Home</a>
                     <a href="/marketPlace">Marketplace</a>
                     <a href="/tutorial">Tutorials</a>
@@ -26,7 +24,7 @@
                     <a href="/agridoc">AgriDoctor</a>
                 </div>
                 <div class="nav-buttons">
-                    <!---->
+                    <%- include("layout/loginOutUser") %>
                 </div>
             </nav>
         </div>
@@ -38,11 +36,10 @@
             <!-- Profile Section -->
             <div class="profile-section">
                 <div class="profile-image">
-                    <!---->
-                    <img src="/images/defaultProfile.png" alt="Farmer Profile" />
+                    <img src="<%-userData.image%>" alt="Farmer Profile" />
                 </div>
-                <h1 class="farmer-name">43</h1>
-                <p class="farmer-email">43</p>
+                <h1 class="farmer-name"><%= userData.name %></h1>
+                <p class="farmer-email"><%= userData.email %></p>
             </div>
 
             <!-- Action Links -->
@@ -58,6 +55,5 @@
             </div>
         </div>
     </div>
-    <!---->
 </body>
 </html>
