@@ -3,85 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chasha.i - Blog</title>
-    <link rel="stylesheet" href="css/blog.css">
+    <title>Chasha.i - Login</title>
+    <link rel="stylesheet" href="/css/logIn.css">
 </head>
 <body>
-    <!-- Header -->
-     <!--/* copied from home nav */-->
-    <header class="header">
-        <div class="containerNav">
-            <nav class="nav">
-                <a href="#" class="logo">
-                    <span class="logo-text">Chasha.i</span>
-                </a>
-                <div class="nav-links">
-                    
-                    <a href="/home">Home</a>
-                    <a href="/marketPlace">Marketplace</a>
-                    <a href="/tutorial">Tutorials</a>
-                    <a href="/weather">Weather</a>
-                    <a href="/blog" style="font-weight: bold; color: #16a34a;">Blog</a>
-                    <a href="/agridoc">AgriDoctor</a>
-                </div>
-                <div class="nav-buttons">
-                    <%- include("layout/loginOutUser") %>
-                </div>
-            </nav>
-        </div>
-    </header>
-    <!--/*// copied from home nav */-->
-
-    <!-- AI button -->
-     <button class="AIchat-btn" onclick="window.location.href = '/agridoc'">
-        <svg viewBox="0 0 24 24">
-            <path d="M21.05 11.5a9.5 9.5 0 0 1-14.37 8.17L3 21l1.36-4.13a9.5 9.5 0 1 1 16.69-5.37z"/>
-        </svg>
-    </button>
-    
-    <!-- Main Content -->
     <div class="container">
-        <!-- Header Section -->
-        <div class="header-section">
-            <div class="hero-content">
-                <h1>Farmer Success Stories</h1>
-                <p>Learn from the experiences of farmers across the country</p>
+        <!-- Background Image -->
+        <div class="background-image"></div>
+        
+        <div class="main-content">
+            <div class="content-wrapper">
+                <div class="logo-section">
+                    <a href="#" class="logo-link">
+                        <span class="logo-text">Chasha.i</span>
+                    </a>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title">Blog Details</h1>
+                    </div>
+                    <form class="form" action="/blogAdd" method="post" enctype="multipart/form-data">
+                        
+                        <div class="card-content">
+                            <div class="form-group">
+                            </div> 
+                            <div class="form-group">
+                                <label for="text" class="label">Title</label>
+                                <input 
+                                    id="title" 
+                                    name="title"
+                                    type="text" 
+                                    class="input"
+                                    required 
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="text" class="label">Summary</label>
+                                <input 
+                                    id="summary" 
+                                    name="summary"
+                                    type="text" 
+                                    class="input"
+                                    required 
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="text" class="label">Description</label>
+                                <input 
+                                    id="description" 
+                                    name="description"
+                                    type="text" 
+                                    class="input"
+                                    required 
+                                >
+                                </input>
+                            </div>
+                            <div class="form-group">
+                                <label for="text" class="label">Attribute1</label>
+                                <input 
+                                    id="attribute1" 
+                                    name="attribute1"
+                                    type="text" 
+                                    class="input"
+                                    required 
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="text" class="label">Attribute2</label>
+                                <input 
+                                    id="attribute2" 
+                                    name="attribute2"
+                                    type="text" 
+                                    class="input"
+                                    required 
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="text" class="label">Attribute3</label>
+                                <input 
+                                    id="attribute3"
+                                    name="attribute3" 
+                                    type="text" 
+                                    class="input"
+                                    required 
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="text" class="label">Blog Image</label>
+                                <input 
+                                    id="img" 
+                                    name="img"
+                                    type="file" 
+                                    class="input"
+                                    accept="image/*"
+                                    required 
+                                />
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button 
+                                class="submit-button" 
+                                type="submit"
+                                id="submitBtn"
+                            >
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="search-container">
-                <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
-                </svg>
-                <input type="text" class="search-input" placeholder="Search blogs by title, content or tags..." id="search" />
-            </div>
-        </div>
-
-        <!-- Blog Grid -->
-        <div class="blog-grid" id="blogGrid">
-            
-        </div>
-
-        <!-- No Results Section -->
-        <div class="no-results" id="noResults" style="display: none;">
-            <p>No blogs match your search criteria.</p>
-            <button class="clear-search-btn" onclick="clearSearch()">Clear Search</button>
-        </div>
-
-        <!-- CTA Section -->
-        <div class="add-section">
-            <a href="/blogAdd" class="add-button">Add Blog</a>
         </div>
     </div>
-
-    <!-- Floating Write Blog Button -->
-    <button class="floating-button" onclick="alert('Login to write a blog post!')">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-        </svg>
-    </button>
-      <script>
-    const blogs = <%- JSON.stringify(blogs) %>;
-</script>
-    <script src="/js/blog.js"></script>
-    <%- include("layout/footer") %>
+    <script src="/js/blogAdd.js"></script>
 </body>
 </html>
