@@ -1,4 +1,4 @@
-const API_KEY = 'ecd0a29645a0b5cd92c98317a533d702';
+const API_KEY =process.env.OPENWEATHER_API_KEY;
 
 const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 const AIR_QUALITY_API_URL = 'https://api.openweathermap.org/data/2.5/air_pollution';
