@@ -1,5 +1,6 @@
 const express=require('express');
 const router=express.Router();
+const mongoose = require('mongoose');
 require("dotenv").config();
 const jwt = require('jsonwebtoken');
 const jwtSecret = process.env.JWT_SECRET;

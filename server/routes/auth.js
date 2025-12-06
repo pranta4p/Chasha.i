@@ -9,6 +9,7 @@ const bcrypt =require('bcrypt')
 // if loged in it says already logged in 
 const ensureNotLogedIn=require('../middleware/ensureNotLogedIn');
 const upload=require('../middleware/upload');
+const cloudinary=require('../config/cloudinary');
 
 const User = require('../models/User');
 
@@ -65,7 +66,7 @@ router.post('/signUp',upload.single('img'), async(req, res) => {
      console.log(req.body);
     try {
     const {email, password,name } = req.body;
-      const imagePath = req.file ? `./uploads/${req.file.filename}` : null;
+       const result = await cloudinary.uploader.upload(req.file.path);
     // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -83,7 +84,7 @@ router.post('/signUp',upload.single('img'), async(req, res) => {
       name,
       email,
       password: hashedPassword,
-      image:imagePath
+      image:result.secure_url
     });
 
     // Save to DB

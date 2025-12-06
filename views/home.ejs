@@ -66,11 +66,11 @@
             <div class="stats-grid">
                 <!-- changes to -->
                 <div>
-                    <div class="stat-number">11</div>
+                    <div class="stat-number"><%= countUsers %></div>
                     <div class="stat-label">Farmers Connected</div>
                 </div>
                 <div>
-                    <div class="stat-number">11</div>
+                    <div class="stat-number"><%= products.length %></div>
                     <div class="stat-label">Products Listed</div>
                 </div>
                 <div>
@@ -184,5 +184,7 @@
             </div>
         </div>
     </section>
+
+    <%- include("layout/footer") %>
 </body>
 </html>

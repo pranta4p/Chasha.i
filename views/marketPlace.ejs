@@ -15,7 +15,6 @@
         <div class="containerNav">
             <nav class="nav">
                 <a href="#" class="logo">
-                    <!---->
                     <span class="logo-text">Chasha.i</span>
                 </a>
                 <div class="nav-links">
@@ -28,7 +27,7 @@
                     <a href="/agridoc">AgriDoctor</a>
                 </div>
                 <div class="nav-buttons">
-                    <!---->
+                    <%- include("layout/loginOutUser") %>
                 </div>
             </nav>
         </div>
@@ -36,7 +35,7 @@
     <!--/*// copied from home nav */-->
 
     <!-- AI button -->
-    <button class="AIchat-btn" onclick="window.location.href = '/agridoc'">
+     <button class="AIchat-btn" onclick="window.location.href = '/agridoc'">
         <svg viewBox="0 0 24 24">
             <path d="M21.05 11.5a9.5 9.5 0 0 1-14.37 8.17L3 21l1.36-4.13a9.5 9.5 0 1 1 16.69-5.37z"/>
         </svg>
@@ -58,13 +57,28 @@
                     <div class="filter-group">
                         <label for="location" class="filter-label">Filter by Location</label>
                         <select id="location" class="select">
-                            <!--location-->
+                            <option value="All">All Locations</option>
+                            <option value="Rajshahi">Rajshahi</option>
+                            <option value="Sylhet">Sylhet</option>
+                            <option value="Dhaka">Dhaka</option>
+                            <option value="chittagong">chittagong</option>
+                            <option value="Khulna">Khulna</option>
+                            <option value="Barishal">Barishal</option>
+                            <option value="Mymensingh">Mymensingh</option>
+                            <option value="Rangpur">Rangpur</option>
                         </select>
                     </div>
                     <div class="filter-group">
                         <label for="type" class="filter-label">Filter by Type</label>
                         <select id="type" class="select">
-                            <!--types-->
+                            <option value="All">All Types</option>
+                            <option value="None">None</option>
+                            <option value="Vegetables">Vegetables</option>
+                            <option value="Fruits">Fruits</option>
+                            <option value="Animal Product">Animal Product</option>
+                            <option value="Crops">Crops</option>
+                            <option value="Nursery/Plants">Nursery/Plants</option>
+                            <option value="Others">Others</option>
                         </select>
                     </div>
                 </div>
@@ -72,7 +86,7 @@
             
             <!-- Products Grid -->
             <div class="products-grid" id="products-grid">
-                <!-- Products will be rendered here by JavaScript/ /marketPlaceProductAdd-->
+                <!-- Products will be rendered here by JavaScript -->
             </div>
             <!-- No Results -->
             <div class="no-results" id="no-results" style="display: none;">
@@ -87,8 +101,9 @@
         </div>
     </main>
     <script>
-    <!---->
+    const products = <%- JSON.stringify(products) %>;
 </script>
-    <!---->
+    <script src="/js/marketPlace.js"></script>
+    <%- include("layout/footer") %>
 </body>
 </html>

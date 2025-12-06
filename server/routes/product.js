@@ -74,21 +74,16 @@ router.delete('/deleteProduct/:id', auth, async (req, res) => {
     }
 
     //  Delete image file if exists
-    if (product.image) {
-      const imagePath = path.join(__dirname, '..', product.image); 
-      fs.unlink(imagePath, (err) => {
-        if (err) {
-          console.warn(`Failed to delete image: ${imagePath}`);
-        } else {
-          console.log(`Image deleted: ${imagePath}`);
-        }
-      });
+     if (product.imageId) {
+      await cloudinary.uploader.destroy(product.imageId);
+      console.log("Cloudinary image deleted:", product.imageId);
     }
 
     //  Delete product from DB
     await Product.findByIdAndDelete(productId);
 
-    res.json({ message: 'Product deleted successfully' });
+    // res.json({ message: 'Product deleted successfully' });
+    res.redirect("/marketPlace");
   } catch (error) {
     console.error('Delete Error:', error);
     res.status(500).json({ message: 'Error deleting product' });

@@ -6,6 +6,7 @@ const jwtSecret = process.env.JWT_SECRET;
 
 const auth=require('../middleware/auth');
 const upload=require('../middleware/upload');
+const cloudinary=require('../config/cloudinary');
 
 const User = require('../models/User');
 const Blog=require('../models/Blog');
@@ -78,9 +79,9 @@ router.post('/blogAdd',auth,
       } = req.body;
     
         
-       const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
+      const result = await cloudinary.uploader.upload(req.file.path);
       const user = await User.findById(req.user.userId);
-      console.log(imagePath);
+
       const blog = new Blog({
         title,
         summary,
@@ -89,7 +90,7 @@ router.post('/blogAdd',auth,
         attribute2, 
         attribute3,
         description,
-        image: imagePath,
+        image: result.secure_url
       });
       console.log(blog);
       const savedblog=await blog.save();

@@ -27,7 +27,7 @@
                     <a href="/agridoc">AgriDoctor</a>
                 </div>
                 <div class="nav-buttons">
-                    <!---->
+                    <%- include("layout/loginOutUser") %>
                 </div>
             </nav>
         </div>
@@ -111,9 +111,10 @@
             <a href="/tutorialsAdd" class="add-button">Add Tutorial</a>
         </div>
     </div>
-     <script>
-        <!---->
-</script>
-    <!---->
+    <script>
+        const tutorials = <%- JSON.stringify(tutorials) %>;
+    </script>
+    <script src="/js/tutorial.js"></script>
+    <%- include("layout/footer") %>
 </body>
 </html>

@@ -13,20 +13,19 @@
         <div class="containerNav">
             <nav class="nav">
                 <a href="#" class="logo">
-                    <!---->
                     <span class="logo-text">Chasha.i</span>
                 </a>
                 <div class="nav-links">
                     
                     <a href="/home">Home</a>
                     <a href="/marketPlace">Marketplace</a>
-                    <a href="/tutorials">Tutorials</a>
+                    <a href="/tutorial">Tutorials</a>
                     <a href="/weather">Weather</a>
                     <a href="/blog">Blog</a>
-                    <a href="" style="font-weight: bold; color: #16a34a;">AgriDoctor</a>
+                    <a href="/agridoc" style="font-weight: bold; color: #16a34a;">AgriDoctor</a>
                 </div>
                 <div class="nav-buttons">
-                    <!---->
+                    <%- include("layout/loginOutUser") %>
                 </div>
             </nav>
         </div>
@@ -122,36 +121,7 @@
                         <div class="disease-result">
                             <div id = "diseaseName"></div>
                             <div id = "confidenceScore"></div>
-                            <!-- <div class="disease-info">
-                                <h3>Detected Disease:</h3>
-                                <div class="disease-name">Leaf Blight</div>
-                            </div>
-                            <div class="confidence-info">
-                                <div class="confidence-score">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
-                                    92%
-                                </div>
-                                <div class="confidence-badge">High Confidence</div>
-                            </div> -->
                         </div>
-                        <!-- <div class="treatment-section">
-                            <h3>
-                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-                                </svg>
-                                Recommended Treatment:
-                            </h3>
-                            <div class="treatment-content">
-                                <p class="treatment-text">
-                            </div>
-                            <div class="tip-box">
-                                <p class="tip-text">
-                                    <strong>Tip:</strong> 
-                                </p>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -196,6 +166,7 @@
         </div>
     </div>
 
-    <!---->
+    <script src="/js/agridoc.js"></script>
+    <%- include("layout/footer") %>
 </body>
 </html>

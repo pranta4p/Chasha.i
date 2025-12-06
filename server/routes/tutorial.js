@@ -6,6 +6,7 @@ const jwtSecret = process.env.JWT_SECRET;
 
 const auth=require('../middleware/auth');
 const upload=require('../middleware/upload');
+const cloudinary=require('../config/cloudinary');
 
 const User = require('../models/User');
 const Tutorial=require('../models/Tutorial')
@@ -58,10 +59,8 @@ router.post('/tutorialsAdd',auth,
         videoLink,
       } = req.body;
     
-        
-       const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
+      const result = await cloudinary.uploader.upload(req.file.path);
       const user = await User.findById(req.user.userId);
-      console.log(imagePath);
       const tutorial = new Tutorial({
        name,
         title,
@@ -72,14 +71,14 @@ router.post('/tutorialsAdd',auth,
         attribute3,
         author_name:user.name,
         videoLink,
-        image: imagePath,
+        image: result.secure_url,
       });
       console.log(tutorial);
        
       const savedtutorial=await tutorial.save();
       user.postedTutorials.push(savedtutorial._id);
        await user.save()
-      console.log(user);
+      // console.log(user);
       res.redirect('/tutorial');
     } catch (error) {
       console.error(error);
