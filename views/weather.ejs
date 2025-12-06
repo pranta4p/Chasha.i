@@ -13,6 +13,8 @@
     <meta name="description" content="Real-time weather updates for agricultural planning and farming activities">
     <meta name="keywords" content="weather, agriculture, farming, crops, irrigation">
     <meta name="author" content="Chasha.i Agricultural Platform">
+    <link rel="stylesheet" href="css/chatAI.css">
+    <script src="js/chatAI.js"></script>
 </head>
 <body>
 
@@ -38,12 +40,11 @@
         </div>
     </header>
 
-    <!-- AI button -->
-     <button class="AIchat-btn" onclick="window.location.href = '/agridoc'">
-        <svg viewBox="0 0 24 24">
-            <path d="M21.05 11.5a9.5 9.5 0 0 1-14.37 8.17L3 21l1.36-4.13a9.5 9.5 0 1 1 16.69-5.37z"/>
-        </svg>
-    </button>
+
+
+        <%- include("layout/chatAI") %>
+
+        
 
     <div class="weather-app">
         <div class="containerWeather">

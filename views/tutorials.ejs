@@ -6,6 +6,8 @@
     <title>Chasha.i - Tutorials</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/css/tutorial.css">
+    <link rel="stylesheet" href="css/chatAI.css">
+    <script src="js/chatAI.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -31,14 +33,6 @@
             </nav>
         </div>
     </header>
-    <!--/*// copied from home nav */-->
-
-    <!-- AI button -->
-     <button class="AIchat-btn" onclick="window.location.href = '/agridoc'">
-        <svg viewBox="0 0 24 24">
-            <path d="M21.05 11.5a9.5 9.5 0 0 1-14.37 8.17L3 21l1.36-4.13a9.5 9.5 0 1 1 16.69-5.37z"/>
-        </svg>
-    </button>
 
     <!-- Main Content -->
     <div class="container">
@@ -55,6 +49,9 @@
                 <input type="text" class="search-input" placeholder="Search tutorials..." id = "search"/>
             </div>
         </div>
+
+        <%- include("layout/chatAI") %>
+
         <!-- Tutorial Grid -->
         <div class="tutorial-grid" id = "tutorialGrid"></div>
         <div id = "noResults">
