@@ -1,3 +1,5 @@
+@import url('/css/theme.css');
+
 * {
     margin: 0;
     padding: 0;
@@ -6,9 +8,9 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    background: var(--bg-secondary);
     min-height: 100vh;
-    color: #1e293b;
+    color: var(--text-primary);
 }
 
 .containerNav {
@@ -18,8 +20,8 @@ body {
 }
 
 .header {
-    background: rgba(255, 255, 255, 0);
-    border-bottom: 1px solid #e5e7eb;
+    background: transparent;
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -45,13 +47,13 @@ body {
 .logo-icon {
     width: 2rem;
     height: 2rem;
-    color: #16a34a;
+    color: var(--brand-green);
 }
 
 .logo-text {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #166534;
+    color: var(--brand-green-text);
 }
 
 .nav-links {
@@ -60,13 +62,13 @@ body {
 }
 
 .nav-links a {
-    color: #6b7280;
+    color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    color: #16a34a;
+    color: var(--brand-green);
 }
 
 .nav-buttons {
@@ -88,22 +90,22 @@ body {
 }
 
 .btn-outline {
-    border: 1px solid #16a34a;
-    color: #16a34a;
+    border: 1px solid var(--brand-green);
+    color: var(--brand-green);
     background: transparent;
 }
 
 .btn-outline:hover {
-    background: #f0fdf4;
+    background: var(--brand-green-light);
 }
 
 .btn-primary {
-    background: #16a34a;
+    background: var(--brand-green);
     color: white;
 }
 
 .btn-primary:hover {
-    background: #15803d;
+    background: var(--brand-green-hover);
 }
 
 .btn-lg {
@@ -118,11 +120,11 @@ body {
 }
 
 .dashboard-card {
-    background: white;
+    background: var(--bg-card);
     border-radius: 20px;
     padding: 3rem;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--border-color);
     backdrop-filter: blur(10px);
     animation: fadeInUp 0.6s ease-out;
 }
@@ -138,7 +140,7 @@ body {
     border-radius: 50%;
     margin: 0 auto 2rem;
     overflow: hidden;
-    border: 5px solid #10b981;
+    border: 5px solid var(--brand-green);
     box-shadow: 0 15px 35px rgba(16, 185, 129, 0.2);
     position: relative;
     animation: bounceIn 0.8s ease-out 0.2s both;
@@ -153,9 +155,9 @@ body {
 .farmer-name {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #1e293b;
+    color: var(--text-primary);
     margin-bottom: 0.75rem;
-    background: linear-gradient(135deg, #065f46, #10b981);
+    background: linear-gradient(135deg, var(--brand-green-hover), var(--brand-green));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -163,7 +165,7 @@ body {
 
 .farmer-email {
     font-size: 1.1rem;
-    color: #64748b;
+    color: var(--text-secondary);
     font-weight: 400;
 }
 
@@ -179,11 +181,11 @@ body {
     align-items: center;
     justify-content: center;
     padding: 1.5rem 2rem;
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-    border: 2px solid #bbf7d0;
+    background: var(--bg-secondary);
+    border: 2px solid var(--brand-green-light);
     border-radius: 16px;
     text-decoration: none;
-    color: #065f46;
+    color: var(--brand-green);
     font-weight: 600;
     font-size: 1.1rem;
     transition: all 0.3s ease;
@@ -198,7 +200,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #10b981, #059669);
+    background: linear-gradient(135deg, var(--brand-green), var(--brand-green-hover));
     transition: left 0.3s ease;
     z-index: 1;
 }

@@ -1,3 +1,5 @@
+@import url('/css/theme.css');
+
 * {
     margin: 0;
     padding: 0;
@@ -7,13 +9,13 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
-    color: #1f2937;
+    color: var(--text-primary);
     min-height: 100vh;
-    background-color: #f9fafb;
+    background-color: var(--bg-secondary);
 }
 
 /* Header */
-/* copied from home nav */
+
 .containerNav {
     max-width: 1200px;
     margin: 0 auto;
@@ -22,9 +24,9 @@ body {
 
 /* Header Styles */
 .header {
-    background: rgba(255, 255, 255, 0);
-    
-    border-bottom: 1px solid #e5e7eb;
+    background: transparent;
+
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -49,13 +51,13 @@ body {
 .logo-icon {
     width: 2rem;
     height: 2rem;
-    color: #16a34a;
+    color: var(--brand-green);
 }
 
 .logo-text {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #166534;
+    color: var(--brand-green-text);
 }
 
 .nav-links {
@@ -65,7 +67,7 @@ body {
 }
 
 .nav-links a {
-    color: #6b7280;
+    color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -77,7 +79,7 @@ body {
 } */
 
 .nav-links a:hover {
-    color: #16a34a;
+    color: var(--brand-green);
 }
 
 .nav-buttons {
@@ -99,29 +101,30 @@ body {
 }
 
 .btn-outline {
-    border: 1px solid #16a34a;
-    color: #16a34a;
+    border: 1px solid var(--brand-green);
+    color: var(--brand-green);
     background: transparent;
 }
 
 .btn-outline:hover {
-    background: #f0fdf4;
+    background: var(--brand-green-light);
 }
 
 .btn-primary {
-    background: #16a34a;
+    background: var(--brand-green);
     color: white;
 }
 
 .btn-primary:hover {
-    background: #15803d;
+    background: var(--brand-green-hover);
 }
 
 .btn-lg {
     padding: 0.75rem 2rem;
     font-size: 1.125rem;
 }
-/*// copied from home nav */
+
+
 
 /* Main Content */
 .container {
@@ -140,12 +143,12 @@ body {
     font-size: 3rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    color: #1f2937;
+    color: var(--text-primary);
 }
 
 .hero-description {
     font-size: 1.25rem;
-    color: #6b7280;
+    color: var(--text-secondary);
     margin-bottom: 2rem;
 }
 
@@ -161,7 +164,7 @@ body {
     padding: 1.5rem;
     text-align: center;
     border-radius: 0.5rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-color);
 }
 
 .stat-card.green {
@@ -179,15 +182,50 @@ body {
     border-color: #d8b4fe;
 }
 
+[data-theme="dark"] .stat-card.green {
+    background: linear-gradient(to right, #14532d, #166534);
+    border-color: #15803d;
+}
+
+[data-theme="dark"] .stat-card.blue {
+    background: linear-gradient(to right, #1e3a8a, #1d4ed8);
+    border-color: #1e40af;
+}
+
+[data-theme="dark"] .stat-card.purple {
+    background: linear-gradient(to right, #581c87, #6b21a8);
+    border-color: #6b21a8;
+}
+
 .stat-icon {
     width: 2rem;
     height: 2rem;
     margin: 0 auto 0.5rem;
 }
 
-.stat-icon.green { color: #059669; }
-.stat-icon.blue { color: #2563eb; }
-.stat-icon.purple { color: #7c3aed; }
+.stat-icon.green {
+    color: #059669;
+}
+
+.stat-icon.blue {
+    color: #2563eb;
+}
+
+.stat-icon.purple {
+    color: #7c3aed;
+}
+
+[data-theme="dark"] .stat-icon.green {
+    color: #4ade80;
+}
+
+[data-theme="dark"] .stat-icon.blue {
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .stat-icon.purple {
+    color: #a78bfa;
+}
 
 .stat-number {
     font-size: 2rem;
@@ -195,12 +233,32 @@ body {
     margin-bottom: 0.25rem;
 }
 
-.stat-number.green { color: #047857; }
-.stat-number.blue { color: #1d4ed8; }
-.stat-number.purple { color: #6d28d9; }
+.stat-number.green {
+    color: #047857;
+}
+
+.stat-number.blue {
+    color: #1d4ed8;
+}
+
+.stat-number.purple {
+    color: #6d28d9;
+}
+
+[data-theme="dark"] .stat-number.green {
+    color: #dcfce7;
+}
+
+[data-theme="dark"] .stat-number.blue {
+    color: #dbeafe;
+}
+
+[data-theme="dark"] .stat-number.purple {
+    color: #f3e8ff;
+}
 
 .stat-label {
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 /* Main Grid */
@@ -212,7 +270,7 @@ body {
 
 /* Card Styles */
 .card {
-    background: white;
+    background: var(--bg-card);
     border-radius: 0.5rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -226,11 +284,11 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #1f2937;
+    color: var(--text-primary);
 }
 
 .card-description {
-    color: #6b7280;
+    color: var(--text-secondary);
     margin-bottom: 1rem;
 }
 
@@ -244,7 +302,7 @@ body {
 
 /* Upload Section */
 .upload-area {
-    border: 2px dashed #d1d5db;
+    border: 2px dashed var(--border-color);
     border-radius: 0.5rem;
     padding: 1.5rem;
     display: flex;
@@ -256,29 +314,29 @@ body {
 }
 
 .upload-area:hover {
-    border-color: #059669;
+    border-color: var(--brand-green);
 }
 
 .upload-icon {
     width: 4rem;
     height: 4rem;
-    color: #9ca3af;
+    color: var(--text-secondary);
     margin-bottom: 1rem;
 }
 
 .upload-text {
     margin-bottom: 1rem;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .upload-help {
     font-size: 0.75rem;
-    color: #9ca3af;
+    color: var(--text-secondary);
     margin-bottom: 1rem;
 }
 
 .upload-button {
-    background-color: #059669;
+    background-color: var(--brand-green);
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -293,7 +351,7 @@ body {
 }
 
 .upload-button:hover {
-    background-color: #047857;
+    background-color: var(--brand-green-hover);
 }
 
 .upload-button:disabled {
@@ -319,18 +377,19 @@ body {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    background: white;
-    border: 1px solid #d1d5db;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
     font-size: 0.75rem;
     cursor: pointer;
+    color: var(--text-primary);
 }
 
 /* Analysis Button */
 .analyze-button {
     width: 100%;
-    background-color: #059669;
+    background-color: var(--brand-green);
     color: white;
     border: none;
     padding: 0.75rem 1rem;
@@ -346,7 +405,7 @@ body {
 }
 
 .analyze-button:hover {
-    background-color: #047857;
+    background-color: var(--brand-green-hover);
 }
 
 .analyze-button:disabled {
@@ -365,8 +424,13 @@ body {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Results Section */
@@ -377,19 +441,19 @@ body {
     justify-content: center;
     height: 16rem;
     text-align: center;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .results-placeholder svg {
     width: 4rem;
     height: 4rem;
-    color: #d1d5db;
+    color: var(--border-color);
     margin-bottom: 1rem;
 }
 
 .disease-result {
-    background-color: #f0fdf4;
-    border: 1px solid #bbf7d0;
+    background-color: var(--brand-green-light);
+    border: 1px solid var(--brand-green);
     border-radius: 0.5rem;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -399,7 +463,7 @@ body {
 }
 
 .disease-info h3 {
-    color: #059669;
+    color: var(--brand-green);
     font-size: 0.875rem;
     font-weight: 500;
     margin-bottom: 0.25rem;
@@ -408,7 +472,7 @@ body {
 .disease-name {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #047857;
+    color: var(--brand-green-text);
 }
 
 .confidence-info {
@@ -420,13 +484,13 @@ body {
     align-items: center;
     gap: 0.5rem;
     font-weight: bold;
-    color: #047857;
+    color: var(--brand-green);
     margin-bottom: 0.25rem;
 }
 
 .confidence-badge {
-    background-color: #dcfce7;
-    color: #166534;
+    background-color: var(--brand-green-light);
+    color: var(--brand-green-text);
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
     font-size: 0.75rem;
@@ -440,12 +504,12 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: #1f2937;
+    color: var(--text-primary);
 }
 
 .treatment-content {
-    background-color: #f9fafb;
-    border: 1px solid #e5e7eb;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 0.5rem;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -453,7 +517,7 @@ body {
 
 .treatment-text {
     white-space: pre-line;
-    color: #374151;
+    color: var(--text-primary);
     line-height: 1.6;
 }
 
@@ -464,15 +528,24 @@ body {
     padding: 0.75rem;
 }
 
+[data-theme="dark"] .tip-box {
+    background-color: #1e3a8a;
+    border-color: #1e40af;
+}
+
 .tip-text {
     font-size: 0.875rem;
     color: #1e40af;
 }
 
+[data-theme="dark"] .tip-text {
+    color: #dbeafe;
+}
+
 /* How it Works Section */
 .how-it-works {
     margin-top: 3rem;
-    background: white;
+    background: var(--bg-card);
     padding: 1.5rem;
     border-radius: 0.5rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -482,7 +555,7 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    color: #1f2937;
+    color: var(--text-primary);
 }
 
 .steps-grid {
@@ -498,12 +571,12 @@ body {
 .step-icon {
     width: 4rem;
     height: 4rem;
-    background-color: #f0fdf4;
+    background-color: var(--brand-green-light);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #059669;
+    color: var(--brand-green);
     margin: 0 auto 1rem;
 }
 
@@ -511,11 +584,11 @@ body {
     font-weight: 500;
     font-size: 1.125rem;
     margin-bottom: 0.5rem;
-    color: #1f2937;
+    color: var(--text-primary);
 }
 
 .step-description {
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .hidden {

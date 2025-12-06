@@ -1,0 +1,162 @@
+@import url('/css/theme.css');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-primary);
+    align-items: center;
+    height: 100vh;
+    font-family: sans-serif;
+    color: var(--text-primary);
+}
+
+/* Header */
+
+.containerNav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header Styles */
+.header {
+    background: transparent;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    backdrop-filter: blur(8px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 2rem;
+    height: 2rem;
+    color: var(--brand-green);
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--brand-green-text);
+}
+
+.nav-links {
+    /* display: none; */
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* @media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+    }
+} */
+
+.nav-links a:hover {
+    color: var(--brand-green);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-outline {
+    border: 1px solid var(--brand-green);
+    color: var(--brand-green);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: var(--brand-green-light);
+}
+
+.btn-primary {
+    background: var(--brand-green);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--brand-green-hover);
+}
+
+.btn-lg {
+    padding: 0.75rem 2rem;
+    font-size: 1.125rem;
+}
+
+
+
+/* Card container */
+
+.bodyCard {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.card {
+    width: 1000px;
+    background-color: var(--bg-card);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 24px;
+    text-align: center;
+}
+
+/* Image at the top */
+.card-img {
+    width: 100%;
+    height: 250px;
+    object-fit: fit;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+/* Title */
+.card-title {
+    font-size: 2rem;
+    margin: 0 0 12px;
+    color: var(--text-primary);
+}
+
+/* Description */
+.card-desc {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}

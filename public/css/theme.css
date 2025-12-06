@@ -1,0 +1,106 @@
+:root {
+    /* Light Theme (Default) */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9fafb;
+    --bg-card: #ffffff;
+    --bg-header: #ffffff;
+    --bg-input: #ffffff;
+
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --text-accent: #16a34a;
+    --text-white: #ffffff;
+
+    --border-color: #e5e7eb;
+
+    --brand-green: #16a34a;
+    --brand-green-hover: #15803d;
+    --brand-green-light: #dcfce7;
+
+    --brand-green-text: #166534;
+
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    --bg-glass: rgba(255, 255, 255, 0.95);
+    --bg-glass-border: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] {
+    /* Dark Theme */
+    --bg-primary: #111827;
+
+    --bg-secondary: #1f2937;
+
+    --bg-card: #1f2937;
+    --bg-header: #111827;
+    --bg-input: #374151;
+
+
+    --text-primary: #f9fafb;
+
+    --text-secondary: #d1d5db;
+
+    --text-accent: #4ade80;
+
+    --text-white: #ffffff;
+
+    --border-color: #374151;
+
+
+    --brand-green: #22c55e;
+
+    --brand-green-hover: #16a34a;
+
+    --brand-green-light: #14532d;
+
+    --brand-green-text: #dcfce7;
+
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+
+    --bg-glass: rgba(31, 41, 55, 0.95);
+    --bg-glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Global transitions for theme switching */
+body,
+.header,
+.card,
+.feature-card,
+.footer {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+}
+
+.theme-toggle-btn:hover {
+    background-color: var(--bg-secondary);
+    color: var(--text-accent);
+}
+
+/* Position fixed if we want a floating toggle, or just helper class */
+.theme-toggle-fixed {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 1000;
+    background-color: var(--bg-card);
+    box-shadow: var(--shadow-md);
+}

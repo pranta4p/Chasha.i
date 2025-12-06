@@ -1,3 +1,5 @@
+@import url('/css/theme.css');
+
 * {
     margin: 0;
     padding: 0;
@@ -7,13 +9,13 @@
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
-    color: #1a5a1a;
-    background: #ffffff;
+    color: var(--text-primary);
+    background: var(--bg-primary);
     min-height: 100vh;
 }
 
 /* Header */
-/* copied from home nav */
+
 .containerNav {
     max-width: 1200px;
     margin: 0 auto;
@@ -22,9 +24,9 @@ body {
 
 /* Header Styles */
 .header {
-    background: rgba(255, 255, 255, 0);
+    background: transparent;
 
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -50,13 +52,13 @@ body {
 .logo-icon {
     width: 2rem;
     height: 2rem;
-    color: #16a34a;
+    color: var(--brand-green);
 }
 
 .logo-text {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #166534;
+    color: var(--brand-green-text);
 }
 
 .nav-links {
@@ -66,7 +68,7 @@ body {
 }
 
 .nav-links a {
-    color: #6b7280;
+    color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -78,7 +80,7 @@ body {
 } */
 
 .nav-links a:hover {
-    color: #16a34a;
+    color: var(--brand-green);
 }
 
 .nav-buttons {
@@ -100,22 +102,22 @@ body {
 }
 
 .btn-outline {
-    border: 1px solid #16a34a;
-    color: #16a34a;
+    border: 1px solid var(--brand-green);
+    color: var(--brand-green);
     background: transparent;
 }
 
 .btn-outline:hover {
-    background: #f0fdf4;
+    background: var(--brand-green-light);
 }
 
 .btn-primary {
-    background: #16a34a;
+    background: var(--brand-green);
     color: white;
 }
 
 .btn-primary:hover {
-    background: #15803d;
+    background: var(--brand-green-hover);
 }
 
 .btn-lg {
@@ -123,7 +125,7 @@ body {
     font-size: 1.125rem;
 }
 
-/*// copied from home nav */
+
 
 /* AI button */
 .AIchat-btn {
@@ -132,7 +134,7 @@ body {
     right: 24px;
     width: 50px;
     height: 50px;
-    background-color: #16a34a;
+    background-color: var(--brand-green);
     border-radius: 50%;
     border-color: transparent;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
@@ -146,7 +148,7 @@ body {
 
 .AIchat-btn:hover {
     transform: scale(1.07);
-    background-color: #166534;
+    background-color: var(--brand-green-hover);
 }
 
 .AIchat-btn svg {
@@ -165,7 +167,7 @@ body {
     position: absolute;
     top: -8px;
     right: -8px;
-    background-color: #16a34a;
+    background-color: var(--brand-green);
     color: white;
     border-radius: 50%;
     width: 20px;
@@ -223,7 +225,7 @@ body {
 .header h1 {
     font-size: 3rem;
     font-weight: 800;
-    color: #ffffff;
+    color: var(--text-white);
     margin-bottom: 0.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -240,12 +242,12 @@ body {
 }
 
 .search-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--bg-glass);
     backdrop-filter: blur(10px);
     border-radius: 16px;
     padding: 1.5rem;
     box-shadow: 0 8px 32px rgba(45, 122, 45, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--bg-glass-border);
 }
 
 .search-container {
@@ -264,7 +266,7 @@ body {
     left: 12px;
     top: 50%;
     transform: translateY(-50%);
-    color: #2d7a2d;
+    color: var(--brand-green);
     width: 20px;
     height: 20px;
 }
@@ -272,23 +274,24 @@ body {
 .search-input {
     width: 100%;
     padding: 12px 12px 12px 45px;
-    border: 2px solid #e8f5e8;
+    border: 2px solid var(--brand-green-light);
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.3s ease;
-    background: #ffffff;
+    background: var(--bg-input);
+    color: var(--text-primary);
 }
 
 .search-input:focus {
     outline: none;
-    border-color: #2d7a2d;
+    border-color: var(--brand-green);
     box-shadow: 0 0 0 3px rgba(45, 122, 45, 0.1);
 }
 
 .search-btn {
     padding: 12px 20px;
-    background: #2d7a2d;
-    color: #ffffff;
+    background: var(--brand-green);
+    color: var(--text-white);
     border: none;
     border-radius: 8px;
     font-weight: 600;
@@ -301,7 +304,7 @@ body {
 }
 
 .search-btn:hover:not(:disabled) {
-    background: #1a5a1a;
+    background: var(--brand-green-hover);
     transform: translateY(-1px);
 }
 
@@ -318,7 +321,7 @@ body {
 
 .spinner {
     border: 3px solid rgba(45, 122, 45, 0.1);
-    border-top: 3px solid #2d7a2d;
+    border-top: 3px solid var(--brand-green);
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -355,7 +358,7 @@ body {
 }
 
 .initial-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--bg-glass);
     backdrop-filter: blur(10px);
     border-radius: 16px;
     padding: 2rem;
@@ -364,13 +367,13 @@ body {
 }
 
 .initial-card h3 {
-    color: #1a5a1a;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
     font-size: 1.3rem;
 }
 
 .initial-card p {
-    color: #2d7a2d;
+    color: var(--brand-green);
 }
 
 .weather-container {
@@ -380,14 +383,14 @@ body {
 }
 
 .main-weather-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--bg-glass);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2.5rem;
     margin-bottom: 2rem;
     text-align: center;
     box-shadow: 0 8px 32px rgba(45, 122, 45, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--bg-glass-border);
 }
 
 .location-info {
@@ -397,7 +400,7 @@ body {
 .location-info h2 {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #1a5a1a;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
@@ -422,14 +425,14 @@ body {
 .temperature {
     font-size: 3.5rem;
     font-weight: 800;
-    color: #2d7a2d;
+    color: var(--brand-green);
     line-height: 1;
     margin-bottom: 0.25rem;
 }
 
 .description {
     font-size: 1.3rem;
-    color: #1a5a1a;
+    color: var(--text-primary);
     font-weight: 500;
     text-transform: capitalize;
 }
@@ -442,12 +445,12 @@ body {
 }
 
 .detail-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--bg-glass);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     padding: 1.25rem;
     box-shadow: 0 2px 8px rgba(45, 122, 45, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--bg-glass-border);
     transition: all 0.3s ease;
 }
 
@@ -465,19 +468,19 @@ body {
 
 .detail-label {
     font-size: 0.9rem;
-    color: #1a5a1a;
+    color: var(--text-primary);
     font-weight: 500;
 }
 
 .detail-icon {
     width: 18px;
     height: 18px;
-    color: #2d7a2d;
+    color: var(--brand-green);
 }
 
 .detail-value {
-    background: #e8f5e8;
-    color: #1a5a1a;
+    background: var(--brand-green-light);
+    color: var(--brand-green-text);
     padding: 0.5rem 0.75rem;
     border-radius: 6px;
     font-weight: 600;
@@ -485,18 +488,18 @@ body {
 }
 
 .insights-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--bg-glass);
     backdrop-filter: blur(10px);
     border-radius: 16px;
     padding: 2rem;
     box-shadow: 0 8px 32px rgba(45, 122, 45, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--bg-glass-border);
 }
 
 .insights-card h3 {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #1a5a1a;
+    color: var(--text-primary);
     margin-bottom: 1.5rem;
 }
 
@@ -526,9 +529,21 @@ body {
 }
 
 .insight-card.moderate {
-    background: #e8f5e8;
-    border-left-color: #2d7a2d;
-    color: #1a5a1a;
+    background: var(--brand-green-light);
+    border-left-color: var(--brand-green);
+    color: var(--brand-green-text);
+}
+
+[data-theme="dark"] .insight-card.good {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    /* emerald-400 */
+}
+
+[data-theme="dark"] .insight-card.warning {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+    /* amber-400 */
 }
 
 .insight-card:hover {
