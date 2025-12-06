@@ -1,6 +1,6 @@
-const HF_TOKEN =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
-;
+const HF_TOKEN = "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";
 const MODEL_ENDPOINT = "https://api-inference.huggingface.co/models/linkanjarad/mobilenet_v2_1.0_224-plant-disease-identification";
+
 
 let uploadedImage = null;
 
@@ -18,10 +18,6 @@ document.getElementById('imageInput').addEventListener('change', function(e) {
             document.getElementById('analyzeBtn').disabled = false;
         };
         reader.readAsDataURL(file);
-        
-        // Clear previous results
-        // document.getElementById('resultsContent').classList.add('hidden');
-        // document.getElementById('resultsPlaceholder').classList.remove('hidden');
     }
 });
 
@@ -48,9 +44,6 @@ async function analyzeImage() {
         const topResult = result[0];
         document.getElementById('diseaseName').textContent = topResult.label;
         document.getElementById('confidenceScore').textContent = (topResult.score * 100).toFixed(2) + '%';
-        // document.getElementById('resultBox').style.display = 'block';
-        // const dname = document.getElementById('diseaseName');
-        // dname.innerHTML = '<h1>Hello</h1>';
         console.log(topResult.label);
     } catch (err) {
         alert('Error: ' + err.message);
@@ -59,23 +52,3 @@ async function analyzeImage() {
         analyzeBtn.disabled = false;
     }
 }
-
-
-
-// let uploadedImage = null;
-
-// // Image upload functionality
-
-
-// function clearImage() {
-//     uploadedImage = null;
-//     document.getElementById('uploadPrompt').classList.remove('hidden');
-//     document.getElementById('imagePreview').classList.add('hidden');
-//     document.getElementById('uploadBtn').textContent = 'Upload Image';
-//     document.getElementById('analyzeBtn').disabled = true;
-//     document.getElementById('imageInput').value = '';
-    
-//     // Clear results
-//     document.getElementById('resultsContent').classList.add('hidden');
-//     document.getElementById('resultsPlaceholder').classList.remove('hidden');
-// }
