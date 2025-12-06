@@ -39,11 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
         addMessage('Thinking...', 'bot', loadingId);
 
         try {
-            const response = await fetch(API_URL, {
+            const response = await fetch('/api/chat-ai', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    contents: [{ parts: [{ text: text }] }]
+                    message: text
                 })
             });
 
@@ -54,9 +54,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (data.error) {
                 addMessage("Error: " + data.error.message, 'bot');
-            } else {
-                const botReply = data.candidates[0].content.parts[0].text;
+            } else if (data.choices && data.choices[0] && data.choices[0].message) {
+                const botReply = data.choices[0].message.content;
                 addMessage(botReply, 'bot');
+            } else {
+                addMessage("Error: Unexpected response format", 'bot');
+                console.error("Unexpected response:", data);
             }
 
         } catch (error) {
