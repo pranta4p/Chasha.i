@@ -1,165 +1,107 @@
-Chasha. I – AI-Enhanced Agricultural Ecosystem
 
-An intelligent, AI-powered agricultural platform designed to support modern farmers with tools for crop disease diagnosis, smart marketplace, weather forecasting, and community learning.
+#  Chasha. I – AI-Enhanced Agricultural Ecosystem
 
-🚀 Objective
+An intelligent, AI-powered agricultural platform that helps farmers with **crop disease detection**, **smart marketplace**, **weather forecasting**, and **community learning**.
 
-To build an advanced digital agriculture ecosystem where farmers can:
+---
 
-Buy & sell agricultural goods
+##  Objective
 
-Diagnose plant diseases using AI
+The goal of **Chasha.I** is to build a digital ecosystem for farmers where they can:
 
-Receive automated treatment suggestions
+* Buy & sell agricultural goods
+* Diagnose plant diseases using AI
+* Get treatment suggestions
+* Access tutorials & blogs
+* See real-time weather forecasts
 
-Access farming tutorials & blogs
+---
 
-Get real-time weather forecasts
+##  Abstract
 
-📌 Abstract
+**Planta** is an AI-driven agriculture assistant that brings together:
 
-Planta is an AI-driven agriculture assistant that combines essential farming features into one user-friendly system.
-It integrates:
+* Computer vision–based plant disease detection
+* Personalized tutorial & blog content
+* Weather analysis
+* AI chatbot support
+* Marketplace features
 
-Computer vision–based disease detection
+This unified system helps farmers make better decisions and increase productivity.
 
-Personalized learning content
+---
 
-Weather forecasting
+##  Key Features
 
-AI chatbot support
+### 1. User Authentication
 
-Marketplace & community features
+* Secure login & registration
+* Session-based access
+* user roles
 
-This unified platform empowers farmers to make informed decisions and improve productivity.
+### 2. User Dashboard
+* Order history
+* Purchase/sale status
 
-🌟 Key Features
-1 User Authentication
 
-Secure login & registration
+### 3. Smart Marketplace
 
-Session-based access control
+* Sellers upload product listings
+* Buyers filter by type, location, availability
+* Search & sorting
 
-Separate privileges for Farmers and Admin
+### 4. Tutorial Section
 
-2. User Dashboard
+* Users post tutorials
+* Search by crop, disease, topic
+* Community learning
 
-A personalized farmer dashboard:
+### 5. Blog Section
 
-Manage profile
+* Post questions
+* Share success stories
+* Keyword & tag search
 
-View order history
+### 6. Weather Insight & Crop Suggestions
 
-Monitor purchase/sale status
+* Real-time weather
+* Powered by OpenWeatherMap API
 
-Track AI plant diagnosis history
+### 7. AgriDoctor – AI Plant Disease Detection
 
-3. Smart Marketplace
+* Upload plant leaf images
+* CNN model detects disease
+* Confidence score
+* HuggingFace ML model
 
-A fully functional agri-focused e-commerce system:
+---
 
-Sellers can upload products (price, quantity, image)
+## 🛠 Tech Stack
 
-Buyers can filter by:
+**Frontend:**
+HTML, CSS, EJS
 
-Product type
+**Backend:**
+Node.js, Express.js, MongoDB
 
-Location
+**APIs & AI:**
+OpenAI, OpenWeatherMap, HuggingFace Model
 
-Availability
+---
 
-Search and sorting options
+## 👨‍💻 Team: Citation
 
-MongoDB-backed transaction system
+| Name              | Registration No |
+| ----------------- | --------------- |
+| Ali Ashraf Tanvir | 2021331001      |
+| Rafid Bin Nasim   | 2021331027      |
+| Pranta Das        | 2021331043      |
 
-4. Tutorial Section
+---
 
-A community-driven knowledge platform:
+## 📁 Project Structure
 
-Farmers can post tutorials (disease treatment, yield improvement, tips)
-
-Explore by:
-
-Crop type
-
-Disease name
-
-Topic
-
-Smart search included
-
-5. Blog Section
-
-A dedicated agricultural discussion area:
-
-Users can ask questions
-
-Share farming success stories
-
-Comment and help others
-
-Advanced search using keywords & tags
-
-6. Weather Insight & Smart Crop Suggestions
-
-Real-time weather features:
-
-Temperature, humidity, rainfall, wind
-
-5–7 day forecast
-
-AI-generated crop suggestions based on weather conditions
-
-Powered by OpenWeatherMap API
-
-7. AgriDoctor (AI Plant Disease Detection)
-
-AI-powered plant diagnosis:
-
-Upload plant leaf images
-
-CNN-based ML model identifies diseases
-
-Confidence score included
-
-Automated treatment suggestions generated using AI
-
-Model Source: Hugging Face Plant Disease Detection Model
-
-🛠 Tech Stack
-Frontend
-
-HTML
-
-CSS
-
-EJS
-
-Backend
-
-Node.js
-
-Express.js
-
-MongoDB
-
-APIs & AI
-
-OpenAI API
-
-OpenWeatherMap API
-
-Hugging Face ML Model
-
-👨‍💻 Team Citation
-Name	Registration No
-Ali Ashraf Tanvir	2021331001
-Rafid Bin Nasim	2021331027
-Pranta Das	2021331043
-
-
-<code>
-📂 Project Structure 
+```
 CHASHA.I/
 ├── public/
 │ ├── css/
@@ -230,39 +172,56 @@ CHASHA.I/
 ├── package.json
 ├── .env
 ├── server.js
+```
 
-</code>
+---
 
-📸 AI Plant Disease Detection Workflow
+## 📸 AI Plant Disease Detection Flow
 
-User uploads plant image
+1. User uploads a leaf image
+2. Image is sent to ML model
+3. Model returns disease + confidence
+4. App generates treatment suggestions
 
-Image sent to ML model API
+---
 
-Model predicts disease
+## 🧪 Run Locally
 
-App returns:
+### 1. Clone repository
 
-Disease name
-
-Confidence %
-
-
-🧪 How to Run Locally
-1. Clone the repository
-<code>
+```bash
 git clone https://github.com/pranta4p/Chasha.i.git
-cd chasha
-</code>
-2. Install dependencies
-<code>
+cd Chasha.i
+```
+
+### 2. Install dependencies
+
+```bash
 npm install
-</code>
-3. Create .env file
+```
 
+### 3. Create `.env` file
 
-4. Run the server
-<code>
+```
+MONGO_URI=your_mongo_uri
+JWT_SECRET=xxxxxx
+CLOUDINARY_API_SECRET=xxxxxx
+CLOUDINARY_API_KEY=xxxxxx
+CLOUDINARY_NAME=xxxxxxx
+HF_TOKEN=xxxxxxxx
+OPENWEATHER_API_KEY=xxxxxxxxxx
+```
+
+### 4. Start the server
+
+```bash
 npm start
-</code>
+```
 
+---
+
+## 📜 License
+
+This project was developed for academic and research purposes.
+
+---
