@@ -4,6 +4,8 @@ const app = express();
 const connectDB = require('./server/config/db');
 const port = process.env.PORT || 3000;
 const path =require('path')
+
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.urlencoded({extended : true}));
 app.use(express.json());

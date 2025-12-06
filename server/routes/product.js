@@ -3,6 +3,7 @@ const router=express.Router();
 require("dotenv").config();
 const jwt = require('jsonwebtoken');
 const jwtSecret = process.env.JWT_SECRET;
+const cloudinary=require('../config/cloudinary');
 
 const auth=require('../middleware/auth');
 const upload=require('../middleware/upload');
@@ -16,8 +17,7 @@ router.get('/marketPlaceProductAdd',auth, (req, res) => {
 
  router.post(
   '/marketPlaceProductAdd',
-  auth,
-  upload.single('img'), 
+  auth,upload.single('img'), 
   async (req, res) => {
     try {
       const user = await User.findById(req.user.userId);
@@ -32,10 +32,7 @@ router.get('/marketPlaceProductAdd',auth, (req, res) => {
         description,
       } = req.body;
     
-        
-      const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
-
-      // console.log(imagePath);
+       const result = await cloudinary.uploader.upload(req.file.path);
       const product = new Product({
         name,
         type,
@@ -45,7 +42,7 @@ router.get('/marketPlaceProductAdd',auth, (req, res) => {
         seller: sellerName,
         phone,
         description,
-        image: imagePath,
+        image: result.secure_url,
       });
       console.log(product);
       const savedproduct=await product.save();

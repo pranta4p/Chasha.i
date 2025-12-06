@@ -8,7 +8,6 @@ const Product=require('../models/Product');
 const jwt = require('jsonwebtoken');
 const jwtSecret = process.env.JWT_SECRET;
 
-
 router.get('/', async(req, res) => {
   const token = req.cookies.token;
     let f = 0;
@@ -74,14 +73,15 @@ router.get('/marketPlace', async (req, res) => {
             userData = await User.findById(userId); 
             f = 1;
             // console.log(userData);
-
+           
         } catch (err) {
             console.error("Invalid token", err.message);
         }
     }
 
     const products = await Product.find();
-    console.log(userData);
+    // console.log(userData);
+    //  console.log(products.length);
     res.render("marketPlace", {f, userData, products});
 });
 
