@@ -76,6 +76,7 @@ router.post('/tutorialsAdd',auth,
         author_name:user.name,
         videoLink,
         image: result.secure_url,
+        author_id: user._id,
       });
       console.log(tutorial);
        
@@ -90,6 +91,42 @@ router.post('/tutorialsAdd',auth,
     }
   
 })
+
+router.delete('/deleteTutorial/:id', auth, async (req, res) => {
+  const tutorialId = req.params.id;
+  const userId = req.user.userId;
+
+  try {
+    // Check if the tutorial belongs to the user
+    const user = await User.findById(userId);
+    if (!user || !user.postedTutorials.includes(tutorialId)) {
+      return res.status(403).json({ message: "You cannot delete someone else's tutorial" });
+    }
+
+    // Remove tutorial from  postedTutorials array
+    await User.findByIdAndUpdate(userId, { $pull: { postedTutorials: tutorialId } });
+
+    const tutorial = await Tutorial.findById(tutorialId);
+    if (!tutorial) {
+      return res.status(404).json({ message: "Tutorial not found" });
+    }
+
+    if (tutorial.imageId) {
+      await cloudinary.uploader.destroy(tutorial.imageId);
+      console.log("Cloudinary image deleted:", tutorial.imageId);
+    }
+
+    await Tutorial.findByIdAndDelete(tutorialId);
+
+    res.json({ message: "Tutorial deleted successfully" });
+    // res.redirect("/tutorials");
+
+  } catch (error) {
+    console.error("Delete Error:", error);
+    res.status(500).json({ message: "Error deleting tutorial" });
+  }
+});
+
 
 
 

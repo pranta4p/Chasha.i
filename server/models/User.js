@@ -17,6 +17,12 @@ const UserSchema = new Schema({
   image: {
     type: String,
   },
+  isVerified: { 
+    type: Boolean, 
+    default: false 
+  },
+  verificationToken: String,
+
    postedProducts: [{
     type: Schema.Types.ObjectId,
     ref: 'Product'

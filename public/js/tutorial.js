@@ -35,12 +35,115 @@
     
 // ];
 // name need to be tutorials with a 's' meaning not tutorial
+//----==
+// function renderTutorials(TutorialsToRender) {
+//     const grid = document.getElementById('tutorialGrid');
+//     const noResults = document.getElementById('noResults');
+
+//     // console.log(TutorialsToRender.length)
+//     if (TutorialsToRender.length === 0) {
+//         grid.style.display = 'none';
+//         noResults.style.display = 'block';
+//         return;
+//     }
+
+//     grid.style.display = 'grid';
+//     noResults.style.display = 'none';
+
+//     grid.innerHTML = TutorialsToRender.map(tutorial => `
+//         <div class="tutorial-card">
+//             <div class="tutorial-image">
+//                 <img src="${tutorial.image}" alt="Irrigation Systems" />
+//             </div>
+//             <div class="tutorial-content">
+//                 <h3 class="tutorial-title">${tutorial.title}</h3>
+//                 <p class="tutorial-description">
+//                     ${tutorial.description}
+//                 </p>
+//                 <div class="tutorial-meta">
+//                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+//                     </svg>
+//                     <span>${tutorial.author_name}</span>
+//                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+//                     </svg>
+//                     <span>${tutorial.duration}</span>
+//                 </div>
+//                 <div class="tutorial-tags">
+//                     <span class="tag">${tutorial.attribute1}</span>
+//                     <span class="tag">${tutorial.attribute2}</span>
+//                     <span class="tag">${tutorial.attribute3}</span>
+//                 </div>
+//                 <a href="${tutorial.videoLink}" class="tutorial-button">Watch Tutorial</a>
+             
+//                 <button class="add-to-cart-btn" onclick="deleteTutorial('${tutorial._id}')">
+//                     Delete
+//                 </button>
+                
+//             </div>
+//         </div>
+//     `).join('');
+
+//     // grid.innerHTML = [
+//     //     '<h1>Hello</h1>'
+//     // ].join('');
+// }
+
+// function filterTutorials() {
+//     const searchTerm = document.getElementById('search').value.toLowerCase();
+
+//     const filtered = tutorials.filter(tutorial => {
+//         const titleMatch = tutorial.title.toLowerCase().includes(searchTerm);
+//         const descriptionMatch = tutorial.description.toLowerCase().includes(searchTerm);
+//         const authorMatch = tutorial.author_name.toLowerCase().includes(searchTerm);
+//         const tagMatch = (
+//             tutorial.attribute1.toLowerCase().includes(searchTerm) ||
+//             tutorial.attribute2.toLowerCase().includes(searchTerm) ||
+//             tutorial.attribute3.toLowerCase().includes(searchTerm)
+//         );
+
+//         return titleMatch || descriptionMatch || authorMatch || tagMatch;
+//     });
+
+//     renderTutorials(filtered);
+// }
+
+// function clearFilters() {
+//     document.getElementById('search').value = '';
+//     renderTutorials(tutorials);
+// }
+
+// // Event listeners
+// document.getElementById('search').addEventListener('input', filterTutorials);
+
+// function deleteTutorial(id) {
+//   fetch(`/deleteTutorial/${id}`, { method: 'DELETE' })
+//   .then(res => {
+//     if (!res.ok) throw new Error('Failed to delete');
+//     return res.json();
+//   })
+//   .then(data => {
+//     alert(data.message);
+//     location.reload();
+//   })
+//   .catch(err => {
+//     console.error(err);
+//     alert("Something went wrong!");
+//   });
+
+// }
+// // Initial render
+// renderTutorials(tutorials);
+
+//--=====
+
+// tutorials.js
 
 function renderTutorials(TutorialsToRender) {
     const grid = document.getElementById('tutorialGrid');
     const noResults = document.getElementById('noResults');
 
-    // console.log(TutorialsToRender.length)
     if (TutorialsToRender.length === 0) {
         grid.style.display = 'none';
         noResults.style.display = 'block';
@@ -50,7 +153,19 @@ function renderTutorials(TutorialsToRender) {
     grid.style.display = 'grid';
     noResults.style.display = 'none';
 
-    grid.innerHTML = TutorialsToRender.map(tutorial => `
+    grid.innerHTML = TutorialsToRender.map(tutorial => {
+        let deleteButton = '';
+
+        // Show delete button only if user is logged in AND user is the author
+        if (userData && tutorial.author_id === userData._id) {
+            deleteButton = `
+                <button class="add-to-cart-btn" onclick="deleteTutorial('${tutorial._id}')">
+                    Delete
+                </button>
+            `;
+        }
+
+        return `
         <div class="tutorial-card">
             <div class="tutorial-image">
                 <img src="${tutorial.image}" alt="Irrigation Systems" />
@@ -76,18 +191,14 @@ function renderTutorials(TutorialsToRender) {
                     <span class="tag">${tutorial.attribute3}</span>
                 </div>
                 <a href="${tutorial.videoLink}" class="tutorial-button">Watch Tutorial</a>
-                <button class="add-to-cart-btn" onclick="deleteProduct('${tutorial._id}')">
-                    Delete
-                </button>
+                ${deleteButton}
             </div>
         </div>
-    `).join('');
-
-    // grid.innerHTML = [
-    //     '<h1>Hello</h1>'
-    // ].join('');
+        `;
+    }).join('');
 }
 
+// Filter functions stay the same
 function filterTutorials() {
     const searchTerm = document.getElementById('search').value.toLowerCase();
 
@@ -112,9 +223,29 @@ function clearFilters() {
     renderTutorials(tutorials);
 }
 
-// Event listeners
 document.getElementById('search').addEventListener('input', filterTutorials);
 
-console.log("HHH")
+function deleteTutorial(id) {
+    fetch(`/deleteTutorial/${id}`, { method: 'DELETE' })
+        .then(res => {
+            if (!res.ok) throw new Error('Failed to delete');
+            return res.json();
+        })
+        .then(data => {
+            alert(data.message);
+
+            // Remove deleted tutorial from front-end array without reload
+            const index = tutorials.findIndex(t => t._id === id);
+            if (index !== -1) {
+                tutorials.splice(index, 1);
+                renderTutorials(tutorials);
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Something went wrong!");
+        });
+}
+
 // Initial render
 renderTutorials(tutorials);

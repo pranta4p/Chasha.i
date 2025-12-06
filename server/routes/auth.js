@@ -6,10 +6,11 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const jwtSecret = process.env.JWT_SECRET;
 const bcrypt =require('bcrypt')
+const crypto = require("crypto");
 const fs = require('fs');
 const path = require('path');
+const nodemailer = require("nodemailer");
 
-// if loged in it says already logged in 
 const ensureNotLogedIn=require('../middleware/ensureNotLogedIn');
 const upload=require('../middleware/upload');
 const cloudinary=require('../config/cloudinary');
@@ -28,12 +29,18 @@ router.post('/logIn',  async (req, res) => {
     const user = await  User.findOne({ email });;
     if (!user) {
       return res.status(401).render("messagePage", {
-       message: 'Invalid email or password',
+       message: 'Invalid email',
      redirectUrl: "/login"
      });
     }
-    // console.log(user);
+    if (!user.isVerified) {
+      return res.render("messagePage", {
+      message: "Please verify your email first!",
+      redirectUrl: "/login"
+       });
+    }
 
+     
     // Compare password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
@@ -66,43 +73,97 @@ router.post('/logIn',  async (req, res) => {
 router.get('/signUp',ensureNotLogedIn,(req, res) => {
     res.render("signUp", {});
 })
-router.post('/signUp',upload.single('img'), async(req, res) => {
-     console.log(req.body);
-    try {
-    const {email, password,name } = req.body;
-       const result = await cloudinary.uploader.upload(req.file.path);
-    // Check if user already exists
+router.post('/signUp', upload.single('img'), async (req, res) => {
+  try {
+    const { email, password, name } = req.body;
+
+
+    const result = await cloudinary.uploader.upload(req.file.path);
     fs.unlinkSync(req.file.path);
+
+
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-       return res.status(401).render("messagePage", {
-       message: 'User already exists,login please',
-       redirectUrl: "/login"
-       }); 
+      return res.status(401).render("messagePage", {
+        message: 'User already exists, login please',
+        redirectUrl: "/login"
+      });
     }
 
-    // Hash the password
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create new user
+    const token = crypto.randomBytes(32).toString("hex");
+
     const newUser = new User({
       name,
       email,
       password: hashedPassword,
-      image:result.secure_url
+      image: result.secure_url,
+      isVerified: false,
+      verificationToken: token
     });
 
-    // Save to DB
     await newUser.save();
 
-    // console.log('User saved:', newUser);
-    res.redirect('/logIn');
+    // Send verification email
+    const verifyUrl = `${process.env.BASE_URL}/verify/${token}`;
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+
+    await transporter.sendMail({
+      from: process.env.EMAIL,
+      to: email,
+      subject: "Verify Your Email",
+      html: `
+        <h2>Hello ${name},</h2>
+        <p>Click the link below to verify your email:</p>
+        <a href="${verifyUrl}">${verifyUrl}</a>
+      `
+    });
+
+    res.render("messagePage", {
+      message: "Account created! Please check your email to verify your account.",
+      redirectUrl: "/login"
+    });
 
   } catch (err) {
-    console.error('Error saving user:', err.message);
-    res.status(500).send('Server Error');
+    console.error("Error:", err.message);
+    res.status(500).send("Server Error");
   }
-})
+});
+
+router.get("/verify/:token", async (req, res) => {
+  try {
+    const user = await User.findOne({ verificationToken: req.params.token });
+
+    if (!user) {
+      return res.render("messagePage", {
+        message: "Invalid or expired verification link.",
+        redirectUrl: "/login"
+      });
+    }
+
+    user.isVerified = true;
+    user.verificationToken = null;
+    await user.save();
+
+    res.render("messagePage", {
+      message: "Email verified successfully! You can now log in.",
+      redirectUrl: "/login"
+    });
+
+  } catch (err) {
+    res.status(500).send("Server Error");
+  }
+});
+
 
 
 router.get('/logOut', (req, res) => {

@@ -14,8 +14,16 @@ app.set("view engine", "ejs");
 //db connection
 connectDB();
 
+const mongoose=require('mongoose')
 app.use('/', require('./server/routes/UserRoute'));
-
+// app.get("/reset-db", async (req, res) => {
+//   try {
+//     await mongoose.connection.dropDatabase();
+//     res.send("Database cleared!");
+//   } catch (err) {
+//     res.send(err.message);
+//   }
+// });
 
 app.listen(port, () => {
     console.log(`app listening on port http://localhost:${port}`);
