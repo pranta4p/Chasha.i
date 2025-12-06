@@ -14,6 +14,11 @@ const tutorialSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  author_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true
+  },
   duration: {
     type: String,
     required: true
@@ -28,12 +33,11 @@ const tutorialSchema = new mongoose.Schema({
     type: String
   },
   image: {
-    type: String,
+    type: String
   },
   videoLink: {
-    type: String,
-    
-  },
+    type: String
+  }
 }, {
   timestamps: true
 });

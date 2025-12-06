@@ -7,14 +7,13 @@
         border: none;
         cursor: pointer;
         color: #16a34a;
-        /* background: transparent; */
     }
 </style>
 
-<% if(f == 0){ %>
-    <a href="/logIn" class="btn btn-outline" id = "logIn">Login</a>
-    <a href="/signUp" class="btn btn-primary" id = "signUp">Sign Up</a>
-<% }else{ %>
-    <a href="/dash" class="userName" id = "signUp"><%= userData.name %></a>
-    <a href="/logOut" class="btn btn-outline" id = "logIn">Log Out</a>
+<% if(!userData){ %>
+    <a href="/logIn" class="btn btn-outline" id="logIn">Login</a>
+    <a href="/signUp" class="btn btn-primary" id="signUp">Sign Up</a>
+<% } else { %>
+    <a href="/dash" class="userName" id="signUp"><%= userData.name %></a>
+    <a href="/logOut" class="btn btn-outline" id="logIn">Log Out</a>
 <% } %>
