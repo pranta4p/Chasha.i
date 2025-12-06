@@ -19,7 +19,7 @@ The goal of **Chasha.I** is to build a digital ecosystem for farmers where they 
 
 ##  Abstract
 
-**Planta** is an AI-driven agriculture assistant that brings together:
+**Chasha .I ** is an AI-driven agriculture assistant that brings together:
 
 * Computer vision–based plant disease detection
 * Personalized tutorial & blog content
@@ -74,6 +74,18 @@ This unified system helps farmers make better decisions and increase productivit
 * Confidence score
 * HuggingFace ML model
 
+
+### 8. AI Chatbot  
+An intelligent, 24/7 virtual assistant designed to support farmers anytime.  
+The chatbot helps users by:
+
+* Answering agriculture-related questions  
+* Providing crop care tips  
+* Suggesting solutions for common farming problems  
+* Guiding users through platform features
+* Offering instant support without human intervention  
+
+Powered by the AI API for natural and conversational responses.
 ---
 
 ## 🛠 Tech Stack
