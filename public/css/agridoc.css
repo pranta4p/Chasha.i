@@ -521,3 +521,17 @@ body {
 .hidden {
     display: none;
 }
+
+@media (min-width: 768px) {
+    nav {
+        display: flex;
+    }
+
+    .container {
+        padding: 3rem 1rem;
+    }
+
+    .main-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
