@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farmer Dashboard - Chasha.i</title>
     <link rel="stylesheet" href="/css/dash.css">
 </head>
+
 <body>
     <!-- Navigation Bar -->
     <header class="header">
@@ -38,8 +40,12 @@
                 <div class="profile-image">
                     <img src="<%-userData.image%>" alt="Farmer Profile" />
                 </div>
-                <h1 class="farmer-name"><%= userData.name %></h1>
-                <p class="farmer-email"><%= userData.email %></p>
+                <h1 class="farmer-name">
+                    <%= userData.name %>
+                </h1>
+                <p class="farmer-email">
+                    <%= userData.email %>
+                </p>
             </div>
 
             <!-- Action Links -->
@@ -55,5 +61,7 @@
             </div>
         </div>
     </div>
+    <%- include("layout/footer") %>
 </body>
+
 </html>

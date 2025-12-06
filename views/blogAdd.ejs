@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chasha.i - Login</title>
     <link rel="stylesheet" href="/css/logIn.css">
 </head>
+
 <body>
     <div class="container">
         <!-- Background Image -->
         <div class="background-image"></div>
-        
+
         <div class="main-content">
             <div class="content-wrapper">
                 <div class="logo-section">
@@ -18,95 +20,48 @@
                         <span class="logo-text">Chasha.i</span>
                     </a>
                 </div>
-                
+
                 <div class="card">
                     <div class="card-header">
                         <h1 class="card-title">Blog Details</h1>
                     </div>
                     <form class="form" action="/blogAdd" method="post" enctype="multipart/form-data">
-                        
+
                         <div class="card-content">
                             <div class="form-group">
-                            </div> 
+                            </div>
                             <div class="form-group">
                                 <label for="text" class="label">Title</label>
-                                <input 
-                                    id="title" 
-                                    name="title"
-                                    type="text" 
-                                    class="input"
-                                    required 
-                                />
+                                <input id="title" name="title" type="text" class="input" required />
                             </div>
                             <div class="form-group">
                                 <label for="text" class="label">Summary</label>
-                                <input 
-                                    id="summary" 
-                                    name="summary"
-                                    type="text" 
-                                    class="input"
-                                    required 
-                                />
+                                <input id="summary" name="summary" type="text" class="input" required />
                             </div>
                             <div class="form-group">
                                 <label for="text" class="label">Description</label>
-                                <input 
-                                    id="description" 
-                                    name="description"
-                                    type="text" 
-                                    class="input"
-                                    required 
-                                >
+                                <input id="description" name="description" type="text" class="input" required>
                                 </input>
                             </div>
                             <div class="form-group">
                                 <label for="text" class="label">Attribute1</label>
-                                <input 
-                                    id="attribute1" 
-                                    name="attribute1"
-                                    type="text" 
-                                    class="input"
-                                    required 
-                                />
+                                <input id="attribute1" name="attribute1" type="text" class="input" required />
                             </div>
                             <div class="form-group">
                                 <label for="text" class="label">Attribute2</label>
-                                <input 
-                                    id="attribute2" 
-                                    name="attribute2"
-                                    type="text" 
-                                    class="input"
-                                    required 
-                                />
+                                <input id="attribute2" name="attribute2" type="text" class="input" required />
                             </div>
                             <div class="form-group">
                                 <label for="text" class="label">Attribute3</label>
-                                <input 
-                                    id="attribute3"
-                                    name="attribute3" 
-                                    type="text" 
-                                    class="input"
-                                    required 
-                                />
+                                <input id="attribute3" name="attribute3" type="text" class="input" required />
                             </div>
                             <div class="form-group">
                                 <label for="text" class="label">Blog Image</label>
-                                <input 
-                                    id="img" 
-                                    name="img"
-                                    type="file" 
-                                    class="input"
-                                    accept="image/*"
-                                    required 
-                                />
+                                <input id="img" name="img" type="file" class="input" accept="image/*" required />
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button 
-                                class="submit-button" 
-                                type="submit"
-                                id="submitBtn"
-                            >
+                            <button class="submit-button" type="submit" id="submitBtn">
                                 Submit
                             </button>
                         </div>
@@ -116,5 +71,7 @@
         </div>
     </div>
     <script src="/js/blogAdd.js"></script>
+    <%- include("layout/footer") %>
 </body>
+
 </html>

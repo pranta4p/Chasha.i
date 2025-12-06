@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Centered Card</title>
-  <link rel="stylesheet" href="/css/blogDetail.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Card</title>
+    <link rel="stylesheet" href="/css/blogDetail.css">
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -29,10 +31,12 @@
             </nav>
         </div>
     </header>
-    <div id="bodyCard" class = "bodyCard"></div>
+    <div id="bodyCard" class="bodyCard"></div>
     <script>
         const blog = <%- JSON.stringify(blog) %>;
     </script>
     <script src="/js/blogDetail.js"></script>
+    <%- include("layout/footer") %>
 </body>
+
 </html>
