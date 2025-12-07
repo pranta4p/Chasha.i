@@ -59,6 +59,7 @@ function renderProducts(productsToRender) {
                 </button>
                 </form>
             </div>
+            <a href="/productDetail/${product._id}" class="blog-button">Read Full Detail</a>
         </div>
     `).join('');
 }
