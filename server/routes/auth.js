@@ -10,6 +10,10 @@ const crypto = require("crypto");
 const fs = require('fs');
 const path = require('path');
 const nodemailer = require("nodemailer");
+const sendVerificationEmail = require("../config/email");
+
+router.use(express.json())
+router.use(express.static('public'))
 
 const ensureNotLogedIn=require('../middleware/ensureNotLogedIn');
 const upload=require('../middleware/upload');
@@ -73,26 +77,45 @@ router.post('/logIn',  async (req, res) => {
 router.get('/signUp',ensureNotLogedIn,(req, res) => {
     res.render("signUp", {});
 })
+
+const getCode = () => {
+  const code = Math.floor(Math.random() * 10000)
+                .toString()
+                .padStart(4, "0");
+  return code; // already a string
+}
+
+
 router.post('/signUp', upload.single('img'), async (req, res) => {
-  try {
+ 
+   try {
     const { email, password, name } = req.body;
-
-
-    const result = await cloudinary.uploader.upload(req.file.path);
-    fs.unlinkSync(req.file.path);
-
-
     const existingUser = await User.findOne({ email });
+    
+
     if (existingUser) {
+      fs.unlinkSync(req.file.path);
+         if(!existingUser.isVerified){
+             const verificationLink = `https://chasha-i.onrender.com/verify/${existingUser.verificationToken}`;
+             await sendVerificationEmail(email, verificationLink,existingUser.verificationCode);
+            
+             return res.status(401).render("messagePage", {
+                message: 'Account already exist,verification email sent, Please check your email to verify your account.',
+                redirectUrl: "/enterCode"
+               });
+        }
+       
       return res.status(401).render("messagePage", {
         message: 'User already exists, login please',
         redirectUrl: "/login"
       });
     }
 
+    const result = await cloudinary.uploader.upload(req.file.path);
+    fs.unlinkSync(req.file.path);
 
     const hashedPassword = await bcrypt.hash(password, 10);
-
+    const code=getCode()||10234;
     const token = crypto.randomBytes(32).toString("hex");
 
     const newUser = new User({
@@ -101,36 +124,39 @@ router.post('/signUp', upload.single('img'), async (req, res) => {
       password: hashedPassword,
       image: result.secure_url,
       isVerified: false,
-      verificationToken: token
+      verificationToken: token,
+      verificationCode:code
     });
 
     await newUser.save();
 
     // Send verification email
-    const verifyUrl = `${process.env.BASE_URL}/verify/${token}`;
+    // const verifyUrl = `${process.env.BASE_URL}/verify/${token}`;
+    const verificationLink = `https://chasha-i.onrender.com/verify/${token}`;
+    // const transporter = nodemailer.createTransport({
+    //   service: "gmail",
+    //   auth: {
+    //     user: process.env.EMAIL,
+    //     pass: process.env.EMAIL_PASS
+    //   }
+    // });
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL,
-        pass: process.env.EMAIL_PASS
-      }
-    });
+    await sendVerificationEmail(email, verificationLink,code);
 
-    await transporter.sendMail({
-      from: process.env.EMAIL,
-      to: email,
-      subject: "Verify Your Email",
-      html: `
-        <h2>Hello ${name},</h2>
-        <p>Click the link below to verify your email:</p>
-        <a href="${verifyUrl}">${verifyUrl}</a>
-      `
-    });
+    // await transporter.sendMail({
+    //   from: process.env.EMAIL,
+    //   to: email,
+    //   subject: "Verify Your Email",
+    //   html: `
+    //     <h2>Hello ${name},</h2>
+    //     <p>Click the link below to verify your email:</p>
+    //     <a href="${verifyUrl}">${verifyUrl}</a>
+    //   `
+    // });
 
     res.render("messagePage", {
       message: "Account created! Please check your email to verify your account.",
-      redirectUrl: "/login"
+      redirectUrl: "/enterCode"
     });
 
   } catch (err) {
@@ -163,6 +189,39 @@ router.get("/verify/:token", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
+router.get("/enterCode", (req, res) => {
+    res.render("verifyCode",{});
+});
+
+router.post("/verifyCode", async (req, res) => {
+    try {
+        const { code } = req.body;
+       
+        const user = await User.findOne({ verificationCode: code });
+
+        if (!user) {
+            return res.render("messagePage", {
+                message: "Invalid code. Try again.",
+                redirectUrl: "/enterCode"
+            });
+        }
+
+        user.isVerified = true;
+        user.verificationCode = null;
+        user.verificationToken = null;
+        await user.save();
+
+        res.render("messagePage", {
+            message: "Email verified successfully!",
+            redirectUrl: "/login"
+        });
+
+    } catch (err) {
+        res.status(500).send("Server Error");
+    }
+});
+
 
 
 

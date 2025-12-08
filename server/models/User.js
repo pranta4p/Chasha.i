@@ -22,7 +22,7 @@ const UserSchema = new Schema({
     default: false 
   },
   verificationToken: String,
-
+  verificationCode:String,
    postedProducts: [{
     type: Schema.Types.ObjectId,
     ref: 'Product'
