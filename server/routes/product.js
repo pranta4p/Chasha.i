@@ -85,8 +85,8 @@ router.delete('/deleteProduct/:id', auth, async (req, res) => {
     //  Delete product from DB
     await Product.findByIdAndDelete(productId);
 
-    // res.json({ message: 'Product deleted successfully' });
-    res.redirect("/marketPlace");
+    res.json({ message: 'Product deleted successfully' });
+    
   } catch (error) {
     console.error('Delete Error:', error);
     res.status(500).json({ message: 'Error deleting product' });
