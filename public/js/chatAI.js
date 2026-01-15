@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         addMessage(text, 'user');
         userInput.value = '';
-
+       console.log("hi "+text)
         const loadingId = 'loading-' + Date.now();
         addMessage('Thinking...', 'bot', loadingId);
 
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
             //     addMessage(botReply, 'bot');
             // } 
             else {
-                addMessage("give me a different question", 'bot');
+                addMessage("Too many request", 'bot');
                 console.error("Unexpected response:", data);
             }
 

@@ -55,18 +55,18 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 router.post('/api/chat-ai', async (req, res) => {
 
   try {
-    const { title } = req.body; 
+    const  title  = req.body.message;  //--right
 
-    // 1. Select the model
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    
+  
+    const prompt = ` ${title}"`;
 
-    //  Create prompt
-    const prompt = `Write a short, engaging description (max 2 sentences) for a farming tutorial titled: "${title}"`;
 
-    // 3. Generate content
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = response.text();
+    
 
  
     res.json({ generatedDescription: text });
